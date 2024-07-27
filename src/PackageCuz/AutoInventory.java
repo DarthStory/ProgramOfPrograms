@@ -10,7 +10,7 @@ import java.util.List;
 public class AutoInventory {
 
 	// creates a list of automobile called automobiles
-	private List<Automobile> automobiles;
+	private final List<Automobile> automobiles;
 		
 	//Constructor
 	public AutoInventory() {
@@ -99,13 +99,11 @@ public class AutoInventory {
                 System.out.println("File created: " + file.getName());
             }
             FileWriter writer = new FileWriter(file);
-            BufferedWriter bufferWriter = new BufferedWriter(writer);
-	        for(Automobile automobiles : automobiles) {
-	        	writer.write(automobiles.toString() + "\n");
-	        }
-	        bufferWriter.close();
+                    try (BufferedWriter bufferWriter = new BufferedWriter(writer)) {
+                        for(Automobile automobiles : automobiles) {
+                            bufferWriter.write(automobiles.toString() + "\n");
+                        }   }
 		}catch (IOException e) {
-	    	e.printStackTrace();
 	    }
 		
 

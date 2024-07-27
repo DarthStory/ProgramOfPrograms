@@ -38,6 +38,7 @@ public class Student {
 		this.GPA = GPA;
 	}
 	
+	@Override
 	public String toString() {
 		return "Name: " + name + "\nAddress: " + address + "\nGPA: " + GPA;
 	}

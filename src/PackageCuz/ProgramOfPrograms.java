@@ -6,17 +6,21 @@ import java.util.Scanner;
 public class ProgramOfPrograms {
 
 	public static void main(String[] args) {
-		
 		Scanner scnr = new Scanner(System.in);
+		
 //		Dealership dealership = new Dealership();
 //		GPASorter gpa = new GPASorter();
 		
 		while(true) {
-			System.out.println("\nHello, \n\t This is my program to represent my abilities and understanding"
-					+ " thus far\n in my programming journey. I will give options to chose and show different"
-					+ " programs\n within this man program to do different parts of programing. They will include\n"
-					+ " everything from simple requests from the user and printing it out, to sorting\n algorithms and"
-					+ " searching abilities.");
+			System.out.println("""
+                                           
+                                           Hello, 
+                                           \t This is my program to represent my abilities and understanding thus far
+                                            in my programming journey. I will give options to chose and show different programs
+                                            within this man program to do different parts of programing. They will include
+                                            everything from simple requests from the user and printing it out, to sorting
+                                            algorithms and searching abilities.""");
+
 			System.out.println("\n\n\n Lets get started. Please choose an option by selecting a number: ");
 			System.out.println("1. First Final Project. Automobile Object Manipulation.");
 			System.out.println("2. Second Final Project. List of Students, sort and print.");
@@ -32,6 +36,7 @@ public class ProgramOfPrograms {
 			// User selects which program to play through. 
 			int choice = -1;
 			while(choice < 0)
+			
 				try {
 					choice = scnr.nextInt();
 				}catch (InputMismatchException e) {
@@ -59,7 +64,8 @@ public class ProgramOfPrograms {
 				case 4:
 					System.out.println("Sorting Algorithms. Explainations more than Demonstrations.");
 					SortingAlgorithmsOverview.SortAlgOverview();
-					
+				default: 
+					System.out.println("Invalid Entry.");
 			}
 		}
 	}
