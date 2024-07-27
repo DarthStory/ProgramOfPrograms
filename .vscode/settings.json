@@ -3,6 +3,6 @@
     "java.project.outputPath": "bin",
     "java.project.referencedLibraries": [
         "lib/**/*.jar",
-        "c:\\Users\\David\\OneDrive\\Documents\\Programing Projects and Practice\\sqlite-jdbc-3.46.0.0.jar"
+        "C:\\ProgramOfPrograms\\ProgramOfPrograms\\lib\\sqlite-jdbc-3.46.0.0.jar"
     ]
 }

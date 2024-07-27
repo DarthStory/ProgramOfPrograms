@@ -57,7 +57,6 @@ public class Dealership {
 					
 				}
 				System.out.println("\n\t\t---> Exiting application. <---");
-				scnr.close();
 				// specifically exits the while loop to exit the program
 				return;
 			case 1:

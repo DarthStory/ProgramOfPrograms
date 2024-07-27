@@ -1,0 +1,1 @@
+// Load the SQLite JDBC driver (you must have the .jar file in your classpath)
