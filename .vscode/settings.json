@@ -1,8 +1,0 @@
-{
-    "java.project.sourcePaths": ["src"],
-    "java.project.outputPath": "bin",
-    "java.project.referencedLibraries": [
-        "lib/**/*.jar",
-        "C:\\ProgramOfPrograms\\ProgramOfPrograms\\lib\\sqlite-jdbc-3.46.0.0.jar"
-    ]
-}

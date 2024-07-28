@@ -3,33 +3,13 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
 import java.util.InputMismatchException;
 import java.util.LinkedList;
 import java.util.Scanner;
 
 public class GPASorter {
 
-    private static final String DB_URL = "jbdc:sqlite:GPA.db";
-
-    public static void createDatabase() {
-        try (Connection conn = DriverManager.getConnection(DB_URL)) {
-            if (conn != null) {
-                System.out.println("A new database has been created.");
-            }
-        }catch (SQLException e) {
-            System.out.println(e.getMessage());
-        }
-    }
-
-   
-
-
 	public static void GPA() {
-
 		LinkedList<Student> students = new LinkedList<>();
 		@SuppressWarnings("resource")
 		Scanner scnr = new Scanner(System.in);
@@ -43,7 +23,7 @@ public class GPASorter {
                             StudentSorter.selectionSort(students, new StringComparator());
                             for(Student student : students) {
                                 System.out.println(student);
-                                insertStudent(student);
+                                saveToFile(students);
                             }
                             return;
                         }
@@ -79,36 +59,6 @@ public class GPASorter {
 				System.out.println();
 		}
 	}
-
-    public static void createTable() {
-        String sql = "CREATE TABLE IF NOT EXISTS students ("
-               + " id INTEGER PRIMARY KEY AUTOINCREMENT,"
-               + " name TEXT NOT NULL,"
-               + " address TEXT NOT NULL,"
-               + " gpa REAL"
-               + ");";
-        try (Connection conn = DriverManager.getConnection(DB_URL);
-            PreparedStatement pstmt = conn.prepareStatement(sql)) {
-             pstmt.execute();            
-        }catch(SQLException e) {
-            System.out.println(e.getMessage());
-        }
-    }
-
-    public static void insertStudent(Student student) {
-        String sql = "INSERT INTO students(name, address, gpa) VALUES(?,?,?)";
-
-        try (Connection conn = DriverManager.getConnection(DB_URL);
-             PreparedStatement pstmt = conn.prepareStatement(sql)) {
-            pstmt.setString(1, student.getName());
-            pstmt.setString(2, student.getAddress());
-            pstmt.setDouble(3, student.getGPA());
-            pstmt.executeUpdate();
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
-        }
-    }
-
 	public static void saveToFile(LinkedList<Student> students) {
 		String fileName = "StudentGPA.txt";
 		String filePath = System.getProperty("user.dir") + File.separator + fileName;

@@ -8,10 +8,6 @@ public class ProgramOfPrograms {
 	public static void main(String[] args) {
 		Scanner scnr = new Scanner(System.in);
 		
-		GPASorter.createDatabase();
-        GPASorter.createTable();
-//		Dealership dealership = new Dealership();
-//		GPASorter gpa = new GPASorter();
 		
 		while(true) {
 			System.out.println("""
