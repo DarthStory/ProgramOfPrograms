@@ -1,3 +1,0 @@
--- SQLite
-GPA.db
-

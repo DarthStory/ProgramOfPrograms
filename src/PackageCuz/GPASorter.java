@@ -69,7 +69,7 @@ public class GPASorter {
 		try {
             // Check if the file already exists
             if (file.exists()) {
-                System.out.println("File already exists.");
+                System.out.println("\n");
             }else{
                 // Create a new file
                 file.createNewFile();

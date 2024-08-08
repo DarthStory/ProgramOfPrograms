@@ -1,3 +1,6 @@
-Name: David
-Address: 123 nowheres
+Name: Alex
+Address: 232 somewhere
 GPA: 4.0
+Name: David
+Address: 123 nowhere
+GPA: 3.0
