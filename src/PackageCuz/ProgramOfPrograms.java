@@ -60,7 +60,7 @@ public class ProgramOfPrograms {
 					BagMain.Bags();
 					continue;
 				case 4:
-					System.out.println("Sorting Algorithms. Explainations more than Demonstrations.");
+					System.out.println("Sorting Algorithms. Explainations more than Demonstrations.\n");
 					SortingAlgorithmsOverview.SortAlgOverview();
 				default: 
 					System.out.println("Invalid Entry.");
