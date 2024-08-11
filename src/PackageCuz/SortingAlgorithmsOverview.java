@@ -22,10 +22,19 @@ public class SortingAlgorithmsOverview {
 		Scanner scnr = new Scanner(System.in);
 		System.out.println("Please type out 10 integers under 100. ");
 
-					for(int i = 0; i < 10; i++) {
-						int dataIn = scnr.nextInt();
-						numSort.add(dataIn);
+			int i = 0;
+			while(i < 10) {
+				try {
+					int dataIn = scnr.nextInt();
+					if(dataIn >= 0 || dataIn <= 100){
+					numSort.add(dataIn);
+					i++;
 					}
+				} catch (Exception e) {
+					System.out.println("Invalid entry. Please enter again. ");
+					scnr.next();
+				}						
+			}
 
 		while (true) { 
 
@@ -75,6 +84,8 @@ public class SortingAlgorithmsOverview {
 					System.out.println("2. Quick Sort.");
 					System.out.println("Here is the inital Array as you input: ");
 					System.out.println(numSort);
+
+
 
 					continue;
 				}
