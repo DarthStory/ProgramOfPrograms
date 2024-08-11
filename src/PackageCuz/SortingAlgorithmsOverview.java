@@ -15,6 +15,7 @@ public class SortingAlgorithmsOverview {
 		
 	
 	}
+	@SuppressWarnings("resource")
 	public static void SortingAlgorithems() {
 
 		ArrayList<Integer> numSort = new ArrayList<>(10);
@@ -51,7 +52,6 @@ public class SortingAlgorithmsOverview {
 			switch(choice) {
 				case 0 -> {
 					System.out.println("Exiting Algorithms.");
-					scnr.close();
 					return;
 				}
 				case 1 -> {
@@ -61,7 +61,13 @@ public class SortingAlgorithmsOverview {
 					
 					start = System.nanoTime();
 					SelectionSort.selectionSort(numSort);
+					duration = (System.nanoTime() - start) / 100000;
 
+					System.out.println("Sorted Array: ");
+					for(int num : numSort) {
+						System.out.print(num + " ");
+					}
+					System.out.println("\n" + duration + "ms");
 					continue;
 					}
 

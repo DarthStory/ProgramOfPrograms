@@ -6,10 +6,9 @@ import java.util.Scanner;
 public class ProgramOfPrograms {
 
 	public static void main(String[] args) {
-		Scanner scnr = new Scanner(System.in);
-		
-		
+		Scanner scnr = new Scanner(System.in);		
 		while(true) {
+			
 			System.out.println("""
                                            
                                            Hello, 
@@ -22,7 +21,7 @@ public class ProgramOfPrograms {
 			System.out.println("\n\n\n Lets get started. Please choose an option by selecting a number: ");
 			System.out.println("1. First Final Project. Automobile Object Manipulation.");
 			System.out.println("2. Second Final Project. List of Students, sort and print.");
-			System.out.println("3. This is a program that implements a Bag.");
+			System.out.println("3. This is a program that implements and manipulates a Bag.");
 			System.out.println("4. Sorting Algorithms.");
 	//		System.out.println("5");
 	//		System.out.println("6");
@@ -34,6 +33,7 @@ public class ProgramOfPrograms {
 			// User selects which program to play through. 
 			int choice = -1;
 			while(choice < 0)
+			
 			
 				try {
 					choice = scnr.nextInt();
