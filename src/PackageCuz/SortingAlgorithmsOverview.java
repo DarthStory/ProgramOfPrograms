@@ -18,40 +18,86 @@ public class SortingAlgorithmsOverview {
 	public static void SortingAlgorithems() {
 
 		ArrayList<Integer> numSort = new ArrayList<>(10);
-
 		Scanner scnr = new Scanner(System.in);
 		System.out.println("Please type out 10 integers under 100. ");
 
-		for(int i = 0; i < 10; i++) {
-			int dataIn = scnr.nextInt();
-			numSort.add(dataIn);
-		}
+					for(int i = 0; i < 10; i++) {
+						int dataIn = scnr.nextInt();
+						numSort.add(dataIn);
+					}
 
-		System.out.println("Which algorithm would you like to go over? ");
-		System.out.println("0. Exit, 1. Selection Sort, 2. Quick Sort, 3. Merge Sort, 4. Bubble Sort, 5. Insertion Sort?");
-		
-		int choice = scnr.nextInt();
-		while(choice != 0){
+		while (true) { 
+
+			long start;
+			long duration;
+
+			System.out.println("Which algorithm would you like to go over? ");
+			
+			System.out.println("1. Selection Sort");
+			System.out.println("2. Quick Sort.");
+			System.out.println("3. Merge Sort");
+			System.out.println("4. Bubble Sort");
+			System.out.println("5. Insertion Sort");
+			System.out.println("0. Exit");
+			int choice = -1;
+			while(choice < 0)
+
+				try {
+					choice = scnr.nextInt();
+				} catch (Exception e) {
+					System.out.println("Invalid entry. Please try again. 0-5");
+					scnr.next();
+				}
 			switch(choice) {
+				case 0 -> {
+					System.out.println("Exiting Algorithms.");
+					scnr.close();
+					return;
+				}
 				case 1 -> {
 					System.out.println("1. Selection Sort.");
+					System.out.println("Here is the inital Array as you input: ");
+					System.out.println(numSort);
+					
+					start = System.nanoTime();
+					SelectionSort.selectionSort(numSort);
+
+					continue;
 					}
+
 				case 2 -> {
 					System.out.println("2. Quick Sort.");
+					System.out.println("Here is the inital Array as you input: ");
+					System.out.println(numSort);
+
+					continue;
 				}
 				case 3 -> {
 					System.out.println("3. Merge Sort.");
+					System.out.println("Here is the inital Array as you input: ");
+					System.out.println(numSort);
+
+					continue;
 				}
 				case 4 -> {
 					System.out.println("Bubble Sort.");
+					System.out.println("Here is the inital Array as you input: ");
+					System.out.println(numSort);
+
+					continue;
 				}
 				case 5 -> {
 					System.out.println("Insertion Sort.");
+					System.out.println("Here is the inital Array as you input: ");
+					System.out.println(numSort);
+
+					continue;
 				}
 				default -> {
-					System.out.println("Exit program.");
+					System.out.println("Invalid Entry.");
+					continue;
 				}
-			}
+			}	
 		}
 	}
 }
