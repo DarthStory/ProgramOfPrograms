@@ -1,6 +1,7 @@
 package PackageCuz;
 
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class SortingAlgorithmsOverview {
@@ -19,6 +20,11 @@ public class SortingAlgorithmsOverview {
 	public static void SortingAlgorithems() {
 
 		ArrayList<Integer> numSort = new ArrayList<>(10);
+		ArrayList<Integer> orgArray = new ArrayList<>(10);
+		ArrayList<Integer> orgArray1 = new ArrayList<>(10);
+		ArrayList<Integer> orgArray2 = new ArrayList<>(10);
+		//ArrayList<Integer> orgArray3 = new ArrayList<>(10);
+
 		Scanner scnr = new Scanner(System.in);
 		System.out.println("Please type out 10 integers under 100. ");
 
@@ -26,14 +32,19 @@ public class SortingAlgorithmsOverview {
 			while(i < 10) {
 				try {
 					int dataIn = scnr.nextInt();
-					if(dataIn >= 0 || dataIn <= 100){
-					numSort.add(dataIn);
-					i++;
+					if (dataIn < 0 || dataIn > 100) {
+						throw new IllegalArgumentException();
 					}
-				} catch (Exception e) {
-					System.out.println("Invalid entry. Please enter again. ");
+					numSort.add(dataIn);
+					orgArray.add(dataIn);
+					orgArray1.add(dataIn);
+					orgArray2.add(dataIn);
+					//orgArray3.add(dataIn);
+					i++;
+				} catch (InputMismatchException | IllegalArgumentException e) {
+					System.out.println("Please enter a number from 0 - 100. No decimal numbers.");
 					scnr.next();
-				}						
+				} 						
 			}
 
 		while (true) { 
@@ -77,6 +88,18 @@ public class SortingAlgorithmsOverview {
 						System.out.print(num + " ");
 					}
 					System.out.println("\n" + duration + "ms");
+					System.out.println("Original Array: " + orgArray);
+					System.out.println("Here is the 3rd smallest number: " + numSort.get(2));
+					System.out.println("First you have to determine the size of the ArrayList. Array Size is: " + numSort.size());
+					System.out.println("Then you have to iterate over the list from the first element: " + orgArray.get(0) 
+						+ " to the second to last element in the array: " + orgArray.get(8));
+
+					System.out.println("Examples of Array, First part minus last element, Second part minus First element: ");
+					System.out.println(numSort);
+					SelectionSort.selectionSortFirst(orgArray1);
+					System.out.println(orgArray1);
+					SelectionSort.selectionSortLast(orgArray2);
+					System.out.println(orgArray2);
 					continue;
 					}
 

@@ -7,8 +7,7 @@ public class ProgramOfPrograms {
 
 	public static void main(String[] args) {
 		Scanner scnr = new Scanner(System.in);		
-		while(true) {
-			
+		while(true) {						
 			System.out.println("""
                                            
                                            Hello, 

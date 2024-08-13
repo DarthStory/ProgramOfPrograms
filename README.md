@@ -5,7 +5,10 @@ Sorting Algorithms Overview
     2. request 10 integers under 100
     3. store those integers in an array
     4. Ask the user to pick an algorithm to go over
-    5. *Using the numbers they gave in the array, go through the steps in sorting the array. 
+    5. *Using the numbers they gave in the array, go through the steps in sorting the array.
+        a. I will need to explain the array sort method. 
+        b. I will need to keep the orgiginal array of integers they created to reference, then after sorted, I can identify what numbers are the smallest to largest and what number they replace.
+        
     6. Ask user if they want to go over another array
     7. repeat *
     8. if they say no, exit to main program. 
