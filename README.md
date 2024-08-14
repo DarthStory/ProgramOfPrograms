@@ -8,7 +8,16 @@ Sorting Algorithms Overview
     5. *Using the numbers they gave in the array, go through the steps in sorting the array.
         a. I will need to explain the array sort method. 
         b. I will need to keep the orgiginal array of integers they created to reference, then after sorted, I can identify what numbers are the smallest to largest and what number they replace.
-        
+        c. use this outline in order to progress the "lesson"
+            1. Initialize: Determine the size of the list.
+            2. Outer Loop: Iterate over the list from the first element to the second-to-last element.
+            3. Assume Minimum: Assume the current element (at index i) is the smallest, and store its index as minIndex.
+            4. Inner Loop: Iterate over the remaining unsorted portion of the list (from index i + 1 to the last element).
+            5. Find Minimum: Compare each element in the unsorted portion to the current minimum. If a smaller element is found, update minIndex 
+                to the index of this smaller element.
+            6. Swap: Swap the element at the current index (i) with the element at minIndex.
+            7. Repeat: Repeat steps 3-6 for each element in the list until the entire list is sorted.
+            8. Completion: The list is now sorted.
     6. Ask user if they want to go over another array
     7. repeat *
     8. if they say no, exit to main program. 
