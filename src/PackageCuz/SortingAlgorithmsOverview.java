@@ -92,18 +92,18 @@ public class SortingAlgorithmsOverview {
 					SelectionSort.selectionSortLast(orgArray2);
 
 					System.out.println("\n" + duration + "ms\n");
-					System.out.println("Original Array: " + orgArray + "\n");
-					System.out.println("Here is the 3rd smallest number: " + numSort.get(2) + "\n");
-					System.out.println("First you have to determine the size of the ArrayList. Array Size is: " + numSort.size() + "\n");
+					System.out.println("Original Array: \n" + orgArray + "\n");
+					System.out.println("Here is the 3rd smallest number: \n" + numSort.get(2) + "\n");
+					System.out.println("First you have to determine the size of the ArrayList. Array Size is: \n" + numSort.size() + "\n");
 					System.out.println("Then you have to iterate over the list from the first element: " + orgArray.get(0) 
 						+ " to the second to last element in the array: " + orgArray.get(8) + "\n");
-					System.out.println("You get 'i' from the smallest number in this array: " + orgArray1.get(0) + "\n");
+					System.out.println("You get 'i' from the smallest number in this array: \n" + orgArray1.get(0) + "\n");
 					System.out.println("Now you go over the rest of the array.\n");
 					for(int n = 1; n < orgArray.size(); n++) {
 						System.out.print(orgArray.get(n) + " ");
 					}
 					System.out.println("\n");
-					System.out.println("This is where you get the next lowest element in the array: " + orgArray1.get(1) + "\n");
+					System.out.println("This is where you get the next lowest element in the array: \n" + orgArray1.get(1) + "\n");
 					System.out.println("Then you repeat this until you have the final order.\n");
 					System.out.println(numSort);
 					System.out.println("");
