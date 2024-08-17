@@ -33,5 +33,23 @@ public class DatabaseConnection {
         }
 
         return connection;            
-    }    
+    }  
+    
+    public static Connection createGpaDatabase(String GPADatabase) {
+        Connection connection = null;
+
+        try {
+            connection = DriverManager.getConnection(getDbUrl(), USER, PASSWORD);
+            Statement stmt = connection.createStatement();
+
+            String createDBQuery = "CREATE DATABASE IF NOT EXISTS " + GPADatabase;
+            stmt.executeUpdate(createDBQuery);
+            System.out.println("Database '" + GPADatabase + "' checked/created successfully.");
+
+            connection = DriverManager.getConnection(getDbUrl(), USER, PASSWORD);
+            System.out.println("Connected to the database '" + GPADatabase + "' successfully.");
+        } catch (SQLException e) {
+        }
+        return connection;
+    }
 }
