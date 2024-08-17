@@ -7,7 +7,7 @@ import java.sql.Statement;
 
 public class DatabaseConnection {
 
-    private static final String AUTO_URL = "jbdc:mysql://localhost:3306/";
+    private static final String AUTO_URL = "jdbc:mysql://localhost:3306/";
     private static final String USER = "root";
     private static final String PASSWORD = "Password1!";
 
@@ -23,21 +23,23 @@ public class DatabaseConnection {
     
     public static Connection createAutoDatabase(String AutoDatabase) {
         Connection connection = null;
+        
+        
 
-        try {
-            connection = DriverManager.getConnection(getDbUrl(), getUser(), getPassword());
-            Statement stmt = connection.createStatement();
+            try {
+                connection = DriverManager.getConnection(getDbUrl(), getUser(), getPassword());
+                Statement stmt = connection.createStatement();
 
-            String createDBQuery = "CREATE DATABASE IF NOT EXISTS " + AutoDatabase;
-            stmt.executeUpdate(createDBQuery);
-            System.out.println("Database '" + AutoDatabase + "' checked/created successfully.");
+                String createDBQuery = "CREATE DATABASE IF NOT EXISTS " + AutoDatabase;
+                stmt.executeUpdate(createDBQuery);
+                System.out.println("Database '" + AutoDatabase + "' checked/created successfully.");
 
-            connection = DriverManager.getConnection(getDbUrl(), getUser(), getPassword());
-            System.out.println("Connected to the database '" + AutoDatabase + "' successfully.");
-            
-        } catch (SQLException e) {
-            System.out.println("Did this fail?");
-        }
+                connection = DriverManager.getConnection(getDbUrl(), getUser(), getPassword());
+                System.out.println("Connected to the database '" + AutoDatabase + "' successfully.");
+                
+            } catch (SQLException e) {
+                System.out.println(e);
+            }
 
         return connection;            
     }  

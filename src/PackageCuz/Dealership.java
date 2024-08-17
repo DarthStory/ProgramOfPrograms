@@ -9,48 +9,52 @@ public class Dealership {
 	@SuppressWarnings("resource")
 	public static void dealership() {
 		
-		AutoInventory autoInventory = new AutoInventory();
-		Scanner scnr = new Scanner(System.in);
+            try {
+                AutoInventory autoInventory = new AutoInventory();
+                Scanner scnr = new Scanner(System.in);
+                
+                Class.forName("com.mysql.cj.jdbc.Driver");
+                System.out.println("Driver locaded successfully");
 
-        // Connect to database
-        Connection conn = DatabaseConnection.createAutoDatabase("AutoDatabase");
-        if (conn != null) {
-            System.out.println("Connection established.");
-        }else {
-            System.out.println("debug");
-        }
-        
-		
-		/* A while loop that will keep running until specifically
-		 * told to stop
-		 */
-		while(true) {
-			// Start Menu, to instruct user how to input
-			System.out.println("\nAutomobile Inventory");
-			System.out.println("1. Add an automobile");
-			System.out.println("2. Modify an automobile");
-			System.out.println("3. Delete an automobile");
-			System.out.println("4. View all automobiles");
-			System.out.println("0. Exit Inventory");
-			
-			// prompts to get a user input. 
-			System.out.print("Choose option 0-4.");
-			// initializing choice. 
-			int choice = -1;
-			// since an "int" is being requested, a try/catch is implemented for anything outside
-			// that input. 
-			while (choice < 0)
-				try {
-				// requests input
-				choice = scnr.nextInt();
-				} catch (InputMismatchException e) {
-					System.out.println("Invalid entry. Please try again. 0-4: \n");
-					// if it errors out, this consumes the last input and requests again
-					scnr.next();
-			}
-			// Start of the switch for the menu above
-			switch (choice) {
-			case 0 -> {
+                // Connect to database
+                Connection conn = DatabaseConnection.createAutoDatabase("AutoDatabase");
+                
+                if (conn != null) {
+                    System.out.println("Connection established.");
+                }else {
+                    System.out.println("debug");
+                }
+                
+                /* A while loop that will keep running until specifically
+                * told to stop
+                */
+                while(true) {
+                    // Start Menu, to instruct user how to input
+                    System.out.println("\nAutomobile Inventory");
+                    System.out.println("1. Add an automobile");
+                    System.out.println("2. Modify an automobile");
+                    System.out.println("3. Delete an automobile");
+                    System.out.println("4. View all automobiles");
+                    System.out.println("0. Exit Inventory");
+                    
+                    // prompts to get a user input.
+                    System.out.print("Choose option 0-4.");
+                    // initializing choice.
+                    int choice = -1;
+                    // since an "int" is being requested, a try/catch is implemented for anything outside
+                    // that input.
+                    while (choice < 0)
+                        try {
+                            // requests input
+                            choice = scnr.nextInt();
+                        } catch (InputMismatchException e) {
+                            System.out.println("Invalid entry. Please try again. 0-4: \n");
+                            // if it errors out, this consumes the last input and requests again
+                            scnr.next();
+                        }
+                    // Start of the switch for the menu above
+                    switch (choice) {
+                        case 0 -> {
                             OUTER:
                             while (true) {
                                 System.out.print("Do you want to print out the list to a file? Y(Yes) or N(No)");
@@ -82,8 +86,8 @@ public class Dealership {
                             // specifically exits the while loop to exit the program
                             return;
                         }
-
-			case 1 -> {
+                        
+                        case 1 -> {
                             // add automobile, gets input from user, puts them into the "automobile" and adds
                             // them to the Automobile object
                             System.out.println("Follow prompts to enter Make, Model, Color, Year, and Mileage");
@@ -122,7 +126,7 @@ public class Dealership {
                             System.out.println("Automobile added.\n");
                             // stops case flow
                         }
-			case 2 -> {
+                        case 2 -> {
                             // Modify an entry
                             System.out.print("Enter the number of the automobile to modify: ");
                             // initializes variable
@@ -178,7 +182,7 @@ public class Dealership {
                             autoInventory.editAutomobile(modifyIndex - 1, newMake, newModel, newColor, newYear, newMileage);
                             System.out.println("Automobile modified successfuly.\n");
                         }
-			case 3 -> {
+                        case 3 -> {
                             // delete, takes the index selected by the user and deletes that chosen object.
                             System.out.println("Enter the number of the automobile to delete: ");
                             int deleteIndex = -1;
@@ -199,12 +203,14 @@ public class Dealership {
                             autoInventory.deleteAutomobile(deleteIndex - 1);
                             System.out.println("Automobile deleted successfully.\n");
                         }
-			case 4 -> // View all automobiles by running the viewAutomobiles method. 
-				autoInventory.viewAutomobiles();
-			default -> System.out.println("Invalid choice. Please try again.");
-			}
+                        case 4 -> // View all automobiles by running the viewAutomobiles method.
+                            autoInventory.viewAutomobiles();
+                        default -> System.out.println("Invalid choice. Please try again.");
+                    }
                     // 0 being the weird number to choose, it exits the program.
-                    		}
+                }
+            } catch (ClassNotFoundException ex) {
+            }
 	}
 	
 }
