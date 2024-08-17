@@ -15,7 +15,7 @@ public class DatabaseConnection {
         return AUTO_URL;
     }
     
-    public static Connection createDatabase(String AutoDatabase) {
+    public static Connection createAutoDatabase(String AutoDatabase) {
         Connection connection = null;
 
         try {
