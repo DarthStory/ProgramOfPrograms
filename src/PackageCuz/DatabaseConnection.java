@@ -23,24 +23,36 @@ public class DatabaseConnection {
     
     public static Connection createAutoDatabase(String AutoDatabase) {
         Connection connection = null;        
-
             try {
                 connection = DriverManager.getConnection(getDbUrl(), getUser(), getPassword());
                 Statement stmt = connection.createStatement();
-
                 String createDBQuery = "CREATE DATABASE IF NOT EXISTS " + AutoDatabase;
                 stmt.executeUpdate(createDBQuery);
-                System.out.println("Database '" + AutoDatabase + "' checked/created successfully.");
-
-                connection = DriverManager.getConnection(getDbUrl() + AutoDatabase, getUser(), getPassword());
-                System.out.println("Connected to the database '" + AutoDatabase + "' successfully.");
+                connection = DriverManager.getConnection(getDbUrl() + AutoDatabase, getUser(), getPassword()); 
                 
-            } catch (SQLException e) {
+                createAutoTable(connection);
+            }
+            catch (SQLException e) {
                 System.out.println(e);
             }
-
         return connection;            
-    }  
+    }
+    public static void createAutoTable(Connection connection) {
+        if(connection == null) {
+            System.out.println("Connection is not established.");
+            return;
+        }
+        try {
+            Statement stmt = connection.createStatement();
+            String createTableQuery = "CREATE TABLE IF NOT EXISTS Automobiles (id INT AUTO_INCREMENT PRIMARY KEY,make VARCHAR(50), model VARCHAR(50), color VARCHAR(30), year INT,milage INT)"; 
+            stmt.executeUpdate(createTableQuery);
+            System.out.println("Table 'Automobiles' checked/created successfully.");
+
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+        
+    }
     
     public static Connection createGpaDatabase(String GPADatabase) {
         Connection connection = null;

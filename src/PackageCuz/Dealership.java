@@ -14,11 +14,11 @@ public class Dealership {
                 Scanner scnr = new Scanner(System.in);
                 
                 Class.forName("com.mysql.cj.jdbc.Driver");
-                System.out.println("Driver locaded successfully");
+                System.out.println("Driver loaded successfully");
 
                 // Connect to database
                 Connection conn = DatabaseConnection.createAutoDatabase("AutoDatabase");
-                
+
                 if (conn != null) {
                     System.out.println("Connection established.");
                 }else {
