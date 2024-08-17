@@ -100,8 +100,8 @@ public class AutoInventory {
             }
             FileWriter writer = new FileWriter(file);
                     try (BufferedWriter bufferWriter = new BufferedWriter(writer)) {
-                		for (Automobile automobiles : automobiles) {
-                    		bufferWriter.write(automobiles.toString() + "\n");
+                		for (Automobile automobile : automobiles) {
+                    		bufferWriter.write(automobile.toString() + "\n");
                 		}
  					}
 		}catch (IOException e) {
