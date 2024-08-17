@@ -2,6 +2,7 @@ package PackageCuz;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.InputMismatchException;
+import java.util.List;
 import java.util.Scanner;
 
 public class Dealership {
@@ -18,6 +19,10 @@ public class Dealership {
 
                 // Connect to database
                 Connection conn = DatabaseConnection.createAutoDatabase("AutoDatabase");
+                // Load automobiles from the database
+                List<Automobile> automobiles = DatabaseConnection.loadAutomobiles(conn);
+                autoInventory.setAutomobiles(automobiles);
+                System.out.println("Automobiles loaded from database.");
 
                 if (conn != null) {
                     System.out.println("Connection established.");
@@ -38,7 +43,7 @@ public class Dealership {
                     System.out.println("0. Exit Inventory");
                     
                     // prompts to get a user input.
-                    System.out.print("Choose option 0-4.");
+                    System.out.print("Choose option 0-4.\n");
                     // initializing choice.
                     int choice = -1;
                     // since an "int" is being requested, a try/catch is implemented for anything outside
@@ -76,11 +81,15 @@ public class Dealership {
                                     }
                                 }
                             }
+                            DatabaseConnection.saveAutomobiles(conn, autoInventory.getAutomobiles());
+                            System.out.println("Automobiles saved to database.");
                             try {
                                 if(conn != null && !conn.isClosed()) {
+                                    System.out.println("Connection Closed.");
                                     conn.close();
                                 }
                             } catch (SQLException e) {
+                                System.out.println("Error: " + e);
                             }
                             System.out.println("\n\t\t---> Exiting application. <---");
                             // specifically exits the while loop to exit the program
@@ -209,8 +218,9 @@ public class Dealership {
                     }
                     // 0 being the weird number to choose, it exits the program.
                 }
-            } catch (ClassNotFoundException ex) {
-            }
+            } catch (ClassNotFoundException | SQLException ex) {
+                System.out.println("Error: " + ex);
+            } 
 	}
 	
 }

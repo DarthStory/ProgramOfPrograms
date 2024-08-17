@@ -7,10 +7,12 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+
+
 public class AutoInventory {
 
 	// creates a list of automobile called automobiles
-	private final List<Automobile> automobiles;
+	private List<Automobile> automobiles;
 		
 	//Constructor
 	public AutoInventory() {
@@ -107,5 +109,8 @@ public class AutoInventory {
 		}catch (IOException e) {
 			System.out.println("IOException.");
 	    }
+	}
+	public void setAutomobiles(List<Automobile> automobiles) {
+		this.automobiles = automobiles;
 	}
 }
