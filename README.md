@@ -1,5 +1,7 @@
 This is my Program of Programs. I am setting up a way to go through my projects and some lessons that would allow the user to interact and understand the programs, algorithms and lessons. 
 
+A few things you will need to do to get this to run. You will need to have mySQL installed and your Username and Password for the databases. Then you can go into the "DatabaseConnection.java" class and insert them there. Databases will be created in the first run of each program, so far only Dealership and GPASorter programs utilize mySQL as of this iteration. 
+
 Sorting Algorithms Overview
     1. tell user what we are going to do
     2. request 10 integers under 100
