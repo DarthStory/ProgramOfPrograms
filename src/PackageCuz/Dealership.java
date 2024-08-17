@@ -1,4 +1,6 @@
 package PackageCuz;
+import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -11,7 +13,13 @@ public class Dealership {
 		Scanner scnr = new Scanner(System.in);
 
         // Connect to database
-        DatabaseConnection.createAutoDatabase("AutoDatabase");
+        Connection conn = DatabaseConnection.createAutoDatabase("AutoDatabase");
+        if (conn != null) {
+            System.out.println("Connection established.");
+        }else {
+            System.out.println("debug");
+        }
+        
 		
 		/* A while loop that will keep running until specifically
 		 * told to stop
@@ -36,7 +44,7 @@ public class Dealership {
 				// requests input
 				choice = scnr.nextInt();
 				} catch (InputMismatchException e) {
-					System.out.println("Invalid entry. Please try again. 0-4: ");
+					System.out.println("Invalid entry. Please try again. 0-4: \n");
 					// if it errors out, this consumes the last input and requests again
 					scnr.next();
 			}
@@ -52,6 +60,7 @@ public class Dealership {
                                     case 'n', 'N' -> {
                                         System.out.println("File will not be printed.");
                                         break OUTER;
+                                        
                                     }
                                     case 'y', 'Y' -> {
                                         autoInventory.printList();
@@ -62,6 +71,12 @@ public class Dealership {
                                         continue;
                                     }
                                 }
+                            }
+                            try {
+                                if(conn != null && !conn.isClosed()) {
+                                    conn.close();
+                                }
+                            } catch (SQLException e) {
                             }
                             System.out.println("\n\t\t---> Exiting application. <---");
                             // specifically exits the while loop to exit the program

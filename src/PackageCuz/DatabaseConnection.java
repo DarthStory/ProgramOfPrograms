@@ -14,22 +14,29 @@ public class DatabaseConnection {
     public static String getDbUrl() {
         return AUTO_URL;
     }
+    public static String getUser() {
+        return USER;
+    }
+    public static String getPassword() {
+        return PASSWORD;
+    }
     
     public static Connection createAutoDatabase(String AutoDatabase) {
         Connection connection = null;
 
         try {
-            connection = DriverManager.getConnection(getDbUrl(), USER, PASSWORD);
+            connection = DriverManager.getConnection(getDbUrl(), getUser(), getPassword());
             Statement stmt = connection.createStatement();
 
             String createDBQuery = "CREATE DATABASE IF NOT EXISTS " + AutoDatabase;
             stmt.executeUpdate(createDBQuery);
             System.out.println("Database '" + AutoDatabase + "' checked/created successfully.");
 
-            connection = DriverManager.getConnection(getDbUrl(), USER, PASSWORD);
+            connection = DriverManager.getConnection(getDbUrl(), getUser(), getPassword());
             System.out.println("Connected to the database '" + AutoDatabase + "' successfully.");
             
         } catch (SQLException e) {
+            System.out.println("Did this fail?");
         }
 
         return connection;            
@@ -39,14 +46,14 @@ public class DatabaseConnection {
         Connection connection = null;
 
         try {
-            connection = DriverManager.getConnection(getDbUrl(), USER, PASSWORD);
+            connection = DriverManager.getConnection(getDbUrl(), getUser(), getPassword());
             Statement stmt = connection.createStatement();
 
             String createDBQuery = "CREATE DATABASE IF NOT EXISTS " + GPADatabase;
             stmt.executeUpdate(createDBQuery);
             System.out.println("Database '" + GPADatabase + "' checked/created successfully.");
 
-            connection = DriverManager.getConnection(getDbUrl(), USER, PASSWORD);
+            connection = DriverManager.getConnection(getDbUrl(), getUser(), getPassword());
             System.out.println("Connected to the database '" + GPADatabase + "' successfully.");
         } catch (SQLException e) {
         }
