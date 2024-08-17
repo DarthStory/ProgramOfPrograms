@@ -9,6 +9,9 @@ public class Dealership {
 		
 		AutoInventory autoInventory = new AutoInventory();
 		Scanner scnr = new Scanner(System.in);
+
+        // Connect to database
+        DatabaseConnection.createAutoDatabase("AutoDatabase");
 		
 		/* A while loop that will keep running until specifically
 		 * told to stop
