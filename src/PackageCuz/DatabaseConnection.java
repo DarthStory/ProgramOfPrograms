@@ -7,6 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 public class DatabaseConnection {
@@ -109,8 +110,45 @@ public class DatabaseConnection {
 
             connection = DriverManager.getConnection(getDbUrl() + GPADatabase, getUser(), getPassword());
             System.out.println("Connected to the database '" + GPADatabase + "' successfully.");
+
         } catch (SQLException e) {
+            System.out.println(e);
         }
         return connection;
     }
+
+    public static void createGpaTable(Connection connection) {
+        if(connection == null) {
+            System.out.println("Connection is not established.");
+            return;
+        }
+        try {
+            Statement stmt = connection.createStatement();
+            String createTableQuery = "CREATE TABLE IF NOT EXISTS GPA (id INT AUTO_INCREMENT PRIMARY KEY, name VARCHAR(20), address VARCHAR(20), gpa DECIMAL(2,1))";
+            stmt.executeUpdate(createTableQuery);
+            System.out.println("Table 'GPA' checked/created successfully.");
+
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+    }
+
+    public static LinkedList<Student> loadStudents (Connection connection) throws SQLException {
+        LinkedList<Student> students = new LinkedList<>();
+        Statement stmt = connection.createStatement();
+        ResultSet rs = stmt.executeQuery("SELECT name, address, gpa FROM GPA");
+
+        while(rs.next()) {
+            String name = rs.getString("name");
+            String address = rs.getString("address");
+            Double gpa = rs.getDouble("gpa");
+
+            Student stu = new Student(name, address, gpa);
+            students.add(stu);
+        }
+
+        return students;
+    }
+
+    
 }
