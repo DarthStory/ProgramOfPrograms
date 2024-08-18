@@ -55,8 +55,7 @@ public class DatabaseConnection {
 
         } catch (SQLException e) {
             System.out.println(e);
-        }
-        
+        }   
     }
 
     public static List<Automobile> loadAutomobiles(Connection connection) throws SQLException {
@@ -74,7 +73,6 @@ public class DatabaseConnection {
             Automobile auto = new Automobile(make, model, color, year, mileage);
             automobiles.add(auto);
         }
-
         return automobiles;
     }
 
@@ -150,5 +148,38 @@ public class DatabaseConnection {
         return students;
     }
 
-    
+    public static void saveStudents (Connection connection, LinkedList<Student> students) throws SQLException {
+        if(connection == null) {
+            throw new SQLException("Connection is not established.");
+        }
+        try {
+            // begin transaction
+            connection.setAutoCommit(false);
+
+            // Clear the existing data
+            Statement stmt = connection.createStatement();            
+            stmt.executeUpdate("DELETE FROM GPA");
+
+            // Inserte the current list of Students
+            String insertQuery = "INSERT INTO GPA (name, address, gpa) VALUES (?, ?, ?)";
+            PreparedStatement pstmt = connection.prepareStatement(insertQuery);
+
+            for (Student stu : students) {
+                pstmt.setString(1, stu.getName());
+                pstmt.setString(1, stu.getAddress());
+                pstmt.setDouble(1, stu.getGPA());
+                pstmt.executeUpdate();
+            }
+
+            // Commit the transaction
+            connection.commit();
+            System.out.println("Students saved to the database successfully.");
+            
+        } catch (SQLException e) {
+            System.out.println(e);
+        } finally {
+            // Restore auto-commit mode
+            connection.setAutoCommit(true);
+        }
+    }
 }

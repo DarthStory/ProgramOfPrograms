@@ -82,7 +82,7 @@ public class AutoInventory {
 	
 	
 	
-	
+	// adds data to .txt file
 	public void printList() {
 		
 		String fileName = "AutoInventory.txt";
@@ -110,6 +110,8 @@ public class AutoInventory {
 			System.out.println("IOException.");
 	    }
 	}
+
+	// set for SQL
 	public void setAutomobiles(List<Automobile> automobiles) {
 		this.automobiles = automobiles;
 	}

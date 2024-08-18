@@ -1,6 +1,3 @@
-Name: Alex
-Address: 232 somewhere
-GPA: 4.0
-Name: David
-Address: 123 nowhere
-GPA: 3.0
+Name: Bob
+Address: 321 Lake St.
+GPA: 2.4
