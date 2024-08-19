@@ -10,13 +10,13 @@ A few things you will need to do to get this to run. You will need to have mySQL
 
 First project is an program that a dealership could use to work with inventory. It was my first project in my programming classes. These are "simple" and "incomplete". The longer I work with them the more I find myself stating, "I could do this or that", however, I should do this from the start so these are as I was instructed to accomplish. 
 
-There are 3 classes for this program. 
-    Dealership (main), 
-    Automobile (main object), 
-    AutoInventory (data manipulation).
+>There are 3 classes for this program. 
+>-Dealership (main), 
+>-Automobile (main object), 
+>-AutoInventory (data manipulation).
 
-This is the instruction I was given:
-Your Portfolio Project will consist of three components:
+>This is the instruction I was given:
+>Your Portfolio Project will consist of three components:
 
     Program corrections: Make the appropriate corrections to all the programming assignments submitted as Critical Thinking assignments from Modules 1-6. You will need to submit the programs along with the carefully outlined corrections needed in order for the programs to run correctly.
     Lessons learned reflection: Create a 2-3-page summary that outlines the lessons learned in this Programming I course.
