@@ -8,21 +8,21 @@ A few things you will need to do to get this to run. You will need to have mySQL
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-    First project is an program that a dealership could use to work with inventory. It was my first project in my programming classes. These are "simple" and "incomplete". The longer I work with them the more I find myself stating, "I could do this or that", however, I should do this from the start so these are as I was instructed to accomplish. 
+First project is an program that a dealership could use to work with inventory. It was my first project in my programming classes. These are "simple" and "incomplete". The longer I work with them the more I find myself stating, "I could do this or that", however, I should do this from the start so these are as I was instructed to accomplish. 
 
-    There are 3 classes for this program. 
-        Dealership (main), 
-        Automobile (main object), 
-        AutoInventory (data manipulation).
+There are 3 classes for this program. 
+    Dealership (main), 
+    Automobile (main object), 
+    AutoInventory (data manipulation).
 
-    This is the instruction I was given:
-    Your Portfolio Project will consist of three components:
+This is the instruction I was given:
+Your Portfolio Project will consist of three components:
 
-        Program corrections: Make the appropriate corrections to all the programming assignments submitted as Critical Thinking assignments from Modules 1-6. You will need to submit the programs along with the carefully outlined corrections needed in order for the programs to run correctly.
-        Lessons learned reflection: Create a 2-3-page summary that outlines the lessons learned in this Programming I course.
-        Final program: Create a final program that meets the requirements outlined below.
-        Final Program Requirements
-        Create an automobile class that will be used by a dealership as a vehicle inventory program. The following attributes should be present in your automobile class:
+    Program corrections: Make the appropriate corrections to all the programming assignments submitted as Critical Thinking assignments from Modules 1-6. You will need to submit the programs along with the carefully outlined corrections needed in order for the programs to run correctly.
+    Lessons learned reflection: Create a 2-3-page summary that outlines the lessons learned in this Programming I course.
+    Final program: Create a final program that meets the requirements outlined below.
+    Final Program Requirements
+    Create an automobile class that will be used by a dealership as a vehicle inventory program. The following attributes should be present in your automobile class:
 
         private string make
         private string model
@@ -39,20 +39,20 @@ A few things you will need to do to get this to run. You will need to have mySQL
         update vehicle attributes method
         All methods should include try..catch constructs. Except as noted all methods should return a success or failure message (failure message defined in "catch").
 
-        Create an additional class to call your automobile class (e.g., Main or AutomobileInventory). Include a try..catch construct and print it to the console.
-        Call automobile class with parameterized constructor (e.g., "make, model, color, year, mileage").
-        Then call the method to list the values. Loop through the array and print to the screen.
-        Call the remove vehicle method to clear the variables.
-        Print the return value.
-        Add a new vehicle.
-        Print the return value.
-        Call the list method and print the new vehicle information to the screen.
-        Update the vehicle.
-        Print the return value.
-        Call the listing method and print the information to the screen.
-        Display a message asking if the user wants to print the information to a file (Y or N).
-        Use a scanner to capture the response. If "Y", print the file to a predefined location (e.g., C:\Temp\Autos.txt). Note: you may want to create a method to print the information in the main class.
-        If "N", indicate that a file will not be printed.
+    Create an additional class to call your automobile class (e.g., Main or AutomobileInventory). Include a try..catch construct and print it to the console.
+    Call automobile class with parameterized constructor (e.g., "make, model, color, year, mileage").
+    Then call the method to list the values. Loop through the array and print to the screen.
+    Call the remove vehicle method to clear the variables.
+    Print the return value.
+    Add a new vehicle.
+    Print the return value.
+    Call the list method and print the new vehicle information to the screen.
+    Update the vehicle.
+    Print the return value.
+    Call the listing method and print the information to the screen.
+    Display a message asking if the user wants to print the information to a file (Y or N).
+    Use a scanner to capture the response. If "Y", print the file to a predefined location (e.g., C:\Temp\Autos.txt). Note: you may want to create a method to print the information in the main class.
+    If "N", indicate that a file will not be printed.
      
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     Sorting Algorithms Overview
