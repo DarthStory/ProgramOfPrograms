@@ -110,7 +110,7 @@ public class DatabaseConnection {
             System.out.println("Connected to the database '" + GPADatabase + "' successfully.");
 
         } catch (SQLException e) {
-            System.out.println(e);
+            System.out.println("4" + e);
         }
         return connection;
     }
@@ -127,7 +127,7 @@ public class DatabaseConnection {
             System.out.println("Table 'GPA' checked/created successfully.");
 
         } catch (SQLException e) {
-            System.out.println(e);
+            System.out.println("3" + e);
         }
     }
 
@@ -166,8 +166,8 @@ public class DatabaseConnection {
 
             for (Student stu : students) {
                 pstmt.setString(1, stu.getName());
-                pstmt.setString(1, stu.getAddress());
-                pstmt.setDouble(1, stu.getGPA());
+                pstmt.setString(2, stu.getAddress());
+                pstmt.setDouble(3, stu.getGPA());
                 pstmt.executeUpdate();
             }
 
@@ -176,7 +176,7 @@ public class DatabaseConnection {
             System.out.println("Students saved to the database successfully.");
             
         } catch (SQLException e) {
-            System.out.println(e);
+            System.out.println("2" + e);
         } finally {
             // Restore auto-commit mode
             connection.setAutoCommit(true);

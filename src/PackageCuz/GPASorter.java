@@ -47,9 +47,8 @@ public class GPASorter {
                                 try {
                                     DatabaseConnection.saveStudents(conn, students);
                                 } catch (SQLException e) {
-                                    System.out.println("Error saving students to database: " + e.getMessage());
+                                    System.out.println("Error saving students to database:1 " + e.getMessage());
                                 }
-
                                 return;
                             }
                             case 'y', 'Y' -> {

@@ -1,3 +1,6 @@
-Name: Bob
-Address: 321 Lake St.
-GPA: 2.4
+Name: Alex
+Address: 123 nowhere
+GPA: 4.0
+Name: David
+Address: 123 nowhere
+GPA: 3.9
