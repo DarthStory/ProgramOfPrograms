@@ -9,13 +9,12 @@ A few things you will need to do to get this to run. You will need to have mySQL
 
 #
 
-## First project 
+## Section 1. First project 
 This is a program that a Dealership could use to work with inventory. It was my first project in my programming classes. These are "simple" and "incomplete". The longer I work with them the more I find myself stating, "I could do this or that", however, I should do this from the start so these are as I was instructed to accomplish. 
 
 ## This is the instruction I was given:
 
 >There are 3 classes for this program.
->
 > - Dealership (main), 
 > - Automobile (main object), 
 > - AutoInventory (data manipulation).
@@ -59,7 +58,7 @@ Print the return value.
 Note: you may want to create a method to print the information in the main class.
 If "N", indicate that a file will not be printed.
 ##     
-## Sorting Algorithms Overview
+## Section 3. Sorting Algorithms Overview
 1. tell user what we are going to do
 2. request 10 integers under 100
 3. store those integers in an array

@@ -13,13 +13,18 @@ public class GPASorter {
 		
         
         LinkedList<Student> students = new LinkedList<>();
-        @SuppressWarnings("resource")
-        Scanner scnr = new Scanner(System.in);
+
 
 
             while(true) { 
                 System.out.println("Do you want to enter in a new Student. Y(Yes) or N(No)");
-                String answer = scnr.next();
+                String answer;
+            try (Scanner scnr = new Scanner(System.in)) {
+                answer = scnr.next(); // Get the answer from the user
+            } catch (InputMismatchException e) {
+                System.out.println("Invalid entry. Please try again. Y(Yes) or N(No)");
+                continue; // Restart loop if input is invalid
+            }
                 char ch = answer.charAt(0);
                         switch (ch) {
                             case 'n', 'N' -> {
@@ -32,27 +37,31 @@ public class GPASorter {
                                 return;
                             }
                             case 'y', 'Y' -> {
-                                System.out.println("Enter Name, Address and GPA. ");
-                                scnr.nextLine();
-                                System.out.println("Name: ");
-                                String name = scnr.nextLine();
-                                System.out.println("Address: ");
-                                String address = scnr.nextLine();
-                                double GPA = -1.0;
-                                while(GPA < 0.0) {
-                                    try {
-                                        System.out.println("GPA: ");
-                                        GPA = scnr.nextDouble();
-                                        if (GPA <= 0.0 || GPA > 4.0) {
-                                            System.out.println("Please enter a valid GPA.");
-                                            GPA = -1.0;
-                                            scnr.next();
-                                        }
-                                    }catch (InputMismatchException e) {
-                                        System.out.println("Invalid entry. Please enter again.");
-                                        scnr.next();
-                                    }
-                                }
+                                System.out.println("Enter Name, Address, and GPA.");
+                    String name, address;
+                    double GPA = -1.0;
+
+                    // Get Name and Address
+                    try (Scanner scnr = new Scanner(System.in)) {
+                        System.out.println("Name: ");
+                        name = scnr.nextLine();
+                        System.out.println("Address: ");
+                        address = scnr.nextLine();
+                    }
+
+                    // Get GPA
+                    while (GPA < 0.0) {
+                        try (Scanner scnr = new Scanner(System.in)) {
+                            System.out.println("GPA: ");
+                            GPA = scnr.nextDouble();
+                            if (GPA <= 0.0 || GPA > 4.0) {
+                                System.out.println("Please enter a valid GPA.");
+                                GPA = -1.0;
+                            }
+                        } catch (InputMismatchException e) {
+                            System.out.println("Invalid entry. Please enter again.");
+                        }
+                    }
                                 System.out.println("You entered: " + GPA);
                                 students.add(new Student(name, address, GPA));
                                 System.out.println("Students Added.");
