@@ -1,4 +1,4 @@
-package PackageCuz;
+package GPA;
 import java.util.Comparator;
 import java.util.LinkedList;
 

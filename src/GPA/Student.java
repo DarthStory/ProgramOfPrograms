@@ -1,4 +1,4 @@
-package PackageCuz;
+package GPA;
 public class Student {
 	
 	/*

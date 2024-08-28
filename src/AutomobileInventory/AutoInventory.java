@@ -1,4 +1,4 @@
-package PackageCuz;
+package AutomobileInventory;
 //import statements to get utilities ArrayList and List
 import java.io.BufferedWriter;
 import java.io.File;

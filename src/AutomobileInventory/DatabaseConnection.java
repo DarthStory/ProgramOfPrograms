@@ -1,4 +1,4 @@
-package PackageCuz;
+package AutomobileInventory;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -7,7 +7,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
 
 public class DatabaseConnection {
@@ -129,57 +128,5 @@ public class DatabaseConnection {
         } catch (SQLException e) {
             System.out.println("3" + e);
         }
-    }
-
-    public static LinkedList<Student> loadStudents (Connection connection) throws SQLException {
-        LinkedList<Student> students = new LinkedList<>();
-        Statement stmt = connection.createStatement();
-        ResultSet rs = stmt.executeQuery("SELECT name, address, gpa FROM GPA");
-
-        while(rs.next()) {
-            String name = rs.getString("name");
-            String address = rs.getString("address");
-            Double gpa = rs.getDouble("gpa");
-
-            Student stu = new Student(name, address, gpa);
-            students.add(stu);
-        }
-
-        return students;
-    }
-
-    public static void saveStudents (Connection connection, LinkedList<Student> students) throws SQLException {
-        if(connection == null) {
-            throw new SQLException("Connection is not established.");
-        }
-        try {
-            // begin transaction
-            connection.setAutoCommit(false);
-
-            // Clear the existing data
-            Statement stmt = connection.createStatement();            
-            stmt.executeUpdate("DELETE FROM GPA");
-
-            // Inserte the current list of Students
-            String insertQuery = "INSERT INTO GPA (name, address, gpa) VALUES (?, ?, ?)";
-            PreparedStatement pstmt = connection.prepareStatement(insertQuery);
-
-            for (Student stu : students) {
-                pstmt.setString(1, stu.getName());
-                pstmt.setString(2, stu.getAddress());
-                pstmt.setDouble(3, stu.getGPA());
-                pstmt.executeUpdate();
-            }
-
-            // Commit the transaction
-            connection.commit();
-            System.out.println("Students saved to the database successfully.");
-            
-        } catch (SQLException e) {
-            System.out.println("2" + e);
-        } finally {
-            // Restore auto-commit mode
-            connection.setAutoCommit(true);
-        }
-    }
+    }    
 }

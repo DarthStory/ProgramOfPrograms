@@ -1,4 +1,4 @@
-package PackageCuz;
+package Bags;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -15,7 +15,7 @@ class Bag<T> implements Iterable<T> {
 	 * I used it to work with all of the methods that I have to modify the Bag. It also
 	 * made the code really nice and clean. 
 	 */
-    private ArrayList<T> items = new ArrayList<>();
+    private final ArrayList<T> items = new ArrayList<>();
 
     public void add(T item) {
         items.add(item);

@@ -1,4 +1,4 @@
-package PackageCuz;
+package GPA;
 import java.util.Comparator;
 
 public class StringComparator implements Comparator<Student> {
