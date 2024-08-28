@@ -3,8 +3,6 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.SQLException;
 import java.util.InputMismatchException;
 import java.util.LinkedList;
 import java.util.Scanner;
@@ -13,21 +11,10 @@ public class GPASorter {
 
 	public static void GPA() {
 		
-        Connection conn = null;
-        LinkedList<Student> students;
-
-        try {
-            
-            // Establish connection to the database
-            conn = DatabaseConnection.createGpaDatabase("GPADatabase");
-            DatabaseConnection.createGpaTable(conn);
-
-            // Load students from the database
-            students = DatabaseConnection.loadStudents(conn);
-            System.out.println("Students loaded from database.");
-
-            @SuppressWarnings("resource")
-            Scanner scnr = new Scanner(System.in);
+        
+        LinkedList<Student> students = new LinkedList<>();
+        @SuppressWarnings("resource")
+        Scanner scnr = new Scanner(System.in);
 
 
             while(true) { 
@@ -41,13 +28,6 @@ public class GPASorter {
                                 for(Student student : students) {
                                     System.out.println(student);
                                     saveToFile(students);
-                                }
-
-                                // Save students to the database before exiting
-                                try {
-                                    DatabaseConnection.saveStudents(conn, students);
-                                } catch (SQLException e) {
-                                    System.out.println("Error saving students to database: " + e.getMessage());
                                 }
                                 return;
                             }
@@ -82,17 +62,6 @@ public class GPASorter {
                         //System.exit(0);
                     System.out.println();
             }
-        } catch (SQLException e) {
-            System.out.println("Database error: " + (e));
-        } finally {
-            if (conn != null) {
-                try {
-                    conn.close();
-                } catch (SQLException e) {
-                    System.out.println("Error closing connection: " + (e));
-                }
-            }
-        }
 	}
 	public static void saveToFile(LinkedList<Student> students) {
 		String fileName = "StudentGPA.txt";

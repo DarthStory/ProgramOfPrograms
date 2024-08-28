@@ -76,6 +76,18 @@ public class SortingAlgorithmsOverview {
 				}
 				case 1 -> {
 					System.out.println("1. Selection Sort.\n");
+					System.out.println("""
+							Selection Sort is an in-place comparison sorting algorithm. 
+							It works by repeatedly selecting the smallest (or largest, depending on the order you want), 
+							element from the unsorted part of the array and swapping it with the first unsorted element. 
+							This process continues until the entire array is sorted. 
+							Key Points:
+
+							Selection Sort has a time complexity of O(n^2) because it requires two nested loops: 
+							one to iterate over the array and another to find the minimum element.
+
+							It is not the most efficient for large datasets but is easy to understand and implement.
+							""");
 					System.out.println("Here is the inital Array as you input: ");
 					System.out.println(numSort);
 					
