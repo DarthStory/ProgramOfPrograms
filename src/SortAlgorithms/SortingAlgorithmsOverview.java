@@ -1,6 +1,7 @@
 package SortAlgorithms;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -16,7 +17,6 @@ public class SortingAlgorithmsOverview {
 		
 	
 	}
-	@SuppressWarnings("resource")
 	public static void SortingAlgorithems() {
 
 		ArrayList<Integer> numSort = new ArrayList<>(10);
@@ -25,12 +25,14 @@ public class SortingAlgorithmsOverview {
 		ArrayList<Integer> orgArray2 = new ArrayList<>(10);
 		//ArrayList<Integer> orgArray3 = new ArrayList<>(10);
 
+		
+		@SuppressWarnings("resource")
 		Scanner scnr = new Scanner(System.in);
 		System.out.println("Please type out 10 integers under 100. ");
 
-			int i = 0;
-			while(i < 10) {
-				try {
+
+			for(int i = 0; i < 10; i++) {
+				try{
 					int dataIn = scnr.nextInt();
 					if (dataIn < 0 || dataIn > 100) {
 						throw new IllegalArgumentException();
@@ -40,7 +42,6 @@ public class SortingAlgorithmsOverview {
 					orgArray1.add(dataIn);
 					orgArray2.add(dataIn);
 					//orgArray3.add(dataIn);
-					i++;
 				} catch (InputMismatchException | IllegalArgumentException e) {
 					System.out.println("Please enter a number from 0 - 100. No decimal numbers.");
 					scnr.next();
@@ -125,12 +126,54 @@ public class SortingAlgorithmsOverview {
 					}
 
 				case 2 -> {
-					System.out.println("2. Quick Sort.");
-					System.out.println("Here is the inital Array as you input: ");
-					System.out.println(numSort);
+					System.out.println("2. Quick Sort.\n");
+					System.out.println("""
+						Quick Sort is an efficient, in-place sorting algorithm that uses a divide-and-conquer approach.
+						It works by selecting a pivot element, partitioning the array around the pivot such that elements less than the pivot 
+						are on the left and elements greater than the pivot are on the right. This process is repeated recursively on the 
+						sub-arrays, eventually sorting the entire array.
 
+						Key Points:
 
+						Quick Sort has an average time complexity of O(n log n), making it faster than many other sorting algorithms for large datasets.
+						
+						It is an in-place sort, meaning it requires a minimal amount of additional memory space.
+						""");
 
+					// Convert ArrayList<Integer> to int[] for QuickSort
+					int[] numSortArray = numSort.stream().mapToInt(Integer::intValue).toArray();
+					int[] orgArray1Array = orgArray1.stream().mapToInt(Integer::intValue).toArray();
+					int[] orgArray2Array = orgArray2.stream().mapToInt(Integer::intValue).toArray();
+
+					System.out.println("Here is the initial Array as you input: ");
+					System.out.println(Arrays.toString(numSortArray));
+
+					start = System.nanoTime();
+					QuickSort.quickSort(numSortArray, 0, numSortArray.length - 1);
+					duration = (System.nanoTime() - start) / 100000;
+
+					System.out.println("Sorted Array: ");
+					for (int num : numSortArray) {
+						System.out.print(num + " ");
+					}
+
+					System.out.println("\n" + duration + "ms\n");
+					System.out.println("Original Array 1 (pre-sorted): \n" + Arrays.toString(orgArray1Array) + "\n");
+					System.out.println("Original Array 2 (pre-sorted): \n" + Arrays.toString(orgArray2Array) + "\n");
+					System.out.println("Here is the 3rd smallest number: \n" + numSortArray[2] + "\n");
+					System.out.println("First you have to determine the size of the array. Array Size is: \n" + numSortArray.length + "\n");
+					System.out.println("Then you have to iterate over the list from the first element: " + orgArray1Array[0] 
+						+ " to the last element in the array: " + orgArray1Array[orgArray1Array.length - 1] + "\n");
+					System.out.println("You get 'i' from the partitioning process with the pivot, here is the pivot element from orgArray1Array: \n" + orgArray1Array[0] + "\n");
+					System.out.println("Now you go over the rest of the array.\n");
+					for (int n = 1; n < orgArray1Array.length; n++) {
+						System.out.print(orgArray1Array[n] + " ");
+					}
+					System.out.println("\n");
+					System.out.println("This is where you get the next pivot and continue the partitioning: \n" + orgArray1Array[1] + "\n");
+					System.out.println("Then you repeat this until you have the final order.\n");
+					System.out.println(Arrays.toString(numSortArray));
+					System.out.println("");
 					continue;
 				}
 				case 3 -> {

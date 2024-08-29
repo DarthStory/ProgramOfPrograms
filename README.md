@@ -15,9 +15,9 @@ This is a program that a Dealership could use to work with inventory. It was my 
 ## This is the instruction I was given:
 
 >There are 3 classes for this program.
-> - Dealership (main), 
-> - Automobile (main object), 
-> - AutoInventory (data manipulation).
+> - Dealership (main)
+> - Automobile (main object)
+> - AutoInventory (data manipulation)
 
 ### Your Portfolio Project will consist of three components:
 

@@ -11,7 +11,7 @@ import java.util.Scanner;
 public class ProgramOfPrograms {
 
 	public static void main(String[] args) {
-				
+		Scanner scnr = new Scanner(System.in);		
 		while(true) {	
 								
 			System.out.println("""
@@ -38,7 +38,7 @@ public class ProgramOfPrograms {
 			// User selects which program to play through. 
 			int choice = -1;
 			while(choice < 0)
-				try (Scanner scnr = new Scanner(System.in)) {
+				try {
 					choice = scnr.nextInt();
 				} catch (InputMismatchException e) {
 					System.out.println("Invalid entry. Please try again. 0-9");
@@ -48,6 +48,7 @@ public class ProgramOfPrograms {
 			switch(choice) {
 				case 0:
 					System.out.println("Exiting program.");
+					scnr.close();
 					return;
 				case 1:
 					System.out.println("Starting first program. Automobile Object Manipulation.");
