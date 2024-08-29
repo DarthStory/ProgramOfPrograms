@@ -1,4 +1,4 @@
-package PackageCuz;
+package SortAlgorithms;
 
 import java.util.ArrayList;
 import java.util.InputMismatchException;

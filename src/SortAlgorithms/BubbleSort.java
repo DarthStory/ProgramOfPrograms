@@ -1,4 +1,4 @@
-package PackageCuz;
+package SortAlgorithms;
 
 public class BubbleSort {
     
