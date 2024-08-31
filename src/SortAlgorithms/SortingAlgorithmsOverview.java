@@ -164,7 +164,11 @@ public class SortingAlgorithmsOverview {
 					System.out.println("First you have to determine the size of the array. Array Size is: \n" + numSortArray.length + "\n");
 					System.out.println("Then you have to iterate over the list from the first element: " + orgArray1Array[0] 
 						+ " to the last element in the array: " + orgArray1Array[orgArray1Array.length - 1] + "\n");
-					System.out.println("You get 'i' from the partitioning process with the pivot, here is the pivot element from orgArray1Array: \n" + orgArray1Array[0] + "\n");
+					System.out.println("""
+						You get 'i' from the partitioning process with the pivot. 
+						We chose the last element in the array. 
+						Here is the pivot element from orgArray1Array: \n" + orgArray1Array[0] + "\n
+							""");
 					System.out.println("Now you go over the rest of the array.\n");
 					for (int n = 1; n < orgArray1Array.length; n++) {
 						System.out.print(orgArray1Array[n] + " ");
