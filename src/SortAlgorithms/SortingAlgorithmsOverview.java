@@ -213,20 +213,111 @@ public class SortingAlgorithmsOverview {
 					System.out.println("Original Array 1 (pre-sorted): \n" + Arrays.toString(orgArray1Array) + "\n");
 					System.out.println("Here is the 3rd smallest number: \n" + numSortArray[2] + "\n");
 					System.out.println("First, you have to determine the size of the array. Array Size is: \n" + numSortArray.length + "\n");
-					System.out.println("Then you have to divide the array into two halves: " + Arrays.toString(Arrays.copyOfRange(numSortArray, 0, numSortArray.length / 2)) 
-						+ " and " + Arrays.toString(Arrays.copyOfRange(numSortArray, numSortArray.length / 2, numSortArray.length)) + "\n");
+					System.out.println("Then you have to divide the array into two halves: " + Arrays.toString(Arrays.copyOfRange(orgArray1Array, 0, orgArray1Array.length / 2)) 
+						+ " and " + Arrays.toString(Arrays.copyOfRange(orgArray1Array, orgArray1Array.length / 2, orgArray1Array.length)) + "\n");
 					System.out.println("These halves are recursively sorted and then merged back together.\n");
 					System.out.println("Finally, the entire array is merged and sorted as: \n" + Arrays.toString(numSortArray) + "\n");
 					continue;
 				}
 				
 				case 4 -> {
-					System.out.println("Bubble Sort.");
-					System.out.println("Here is the inital Array as you input: ");
-					System.out.println(numSort);
+					System.out.println("4. Bubble Sort.\n");
+					System.out.println("""
+						Bubble Sort is a simple, comparison-based sorting algorithm that repeatedly steps through the list,
+						compares adjacent elements, and swaps them if they are in the wrong order. This process is repeated
+						until the list is sorted.
+				
+						Key Points:
+				
+						Bubble Sort has a worst-case and average time complexity of O(n^2), making it inefficient on large datasets.
+						
+						It is a stable sorting algorithm, meaning that it preserves the relative order of equal elements.
+						
+						While simple and easy to understand, it is generally not suitable for large datasets due to its inefficiency compared to other algorithms.
+						""");
+				
+					// Convert ArrayList<Integer> to int[] for BubbleSort
+					int[] numSortArray = numSort.stream().mapToInt(Integer::intValue).toArray();
+					int[] orgArray1Array = orgArray1.stream().mapToInt(Integer::intValue).toArray();
+				
+					System.out.println("Here is the initial Array as you input: ");
+					System.out.println(Arrays.toString(numSortArray));
+				
+					start = System.nanoTime();
+					BubbleSort.bubbleSort(numSortArray);
+					duration = (System.nanoTime() - start) / 100000;
+				
+					System.out.println("Sorted Array: ");
+					for (int num : numSortArray) {
+						System.out.print(num + " ");
+					}
+				
+					System.out.println("\n" + duration + "ms\n");
+					System.out.println("Original Array 1 (pre-sorted): \n" + Arrays.toString(orgArray1Array) + "\n");
+					System.out.println("Here is the 3rd smallest number: \n" + numSortArray[2] + "\n");
+					System.out.println("First, you determine the size of the array. Array Size is: \n" + numSortArray.length + "\n");
+					System.out.println("Then, you iterate over the array multiple times, comparing adjacent elements and swapping them if necessary.\n");
 
+					// Demonstration with the first 4 elements
+					System.out.println("Let's take the first 4 elements and demonstrate how Bubble Sort works step by step.\n");
+
+					int[] demoArray = Arrays.copyOfRange(orgArray1Array, 0, 4);
+					System.out.println("Initial 4 elements: " + Arrays.toString(demoArray) + "\n");
+
+					// First pass
+					System.out.println("First Pass:");
+					if (demoArray[0] > demoArray[1]) {
+						System.out.println("Swapping " + demoArray[0] + " and " + demoArray[1]);
+						int temp = demoArray[0];
+						demoArray[0] = demoArray[1];
+						demoArray[1] = temp;
+					}
+					if (demoArray[1] > demoArray[2]) {
+						System.out.println("Swapping " + demoArray[1] + " and " + demoArray[2]);
+						int temp = demoArray[1];
+						demoArray[1] = demoArray[2];
+						demoArray[2] = temp;
+					}
+					if (demoArray[2] > demoArray[3]) {
+						System.out.println("Swapping " + demoArray[2] + " and " + demoArray[3]);
+						int temp = demoArray[2];
+						demoArray[2] = demoArray[3];
+						demoArray[3] = temp;
+					}
+					System.out.println("Array after First Pass: " + Arrays.toString(demoArray) + "\n");
+
+					// Second pass
+					System.out.println("Second Pass:");
+					if (demoArray[0] > demoArray[1]) {
+						System.out.println("Swapping " + demoArray[0] + " and " + demoArray[1]);
+						int temp = demoArray[0];
+						demoArray[0] = demoArray[1];
+						demoArray[1] = temp;
+					}
+					if (demoArray[1] > demoArray[2]) {
+						System.out.println("Swapping " + demoArray[1] + " and " + demoArray[2]);
+						int temp = demoArray[1];
+						demoArray[1] = demoArray[2];
+						demoArray[2] = temp;
+					}
+					System.out.println("Array after Second Pass: " + Arrays.toString(demoArray) + "\n");
+
+					// Third pass
+					System.out.println("Third Pass:");
+					if (demoArray[0] > demoArray[1]) {
+						System.out.println("Swapping " + demoArray[0] + " and " + demoArray[1]);
+						int temp = demoArray[0];
+						demoArray[0] = demoArray[1];
+						demoArray[1] = temp;
+					}
+					System.out.println("Array after Third Pass: " + Arrays.toString(demoArray) + "\n");
+
+					System.out.println("After these passes, the first 4 elements are sorted.\n");
+					System.out.println("With each full pass through the array, the next largest element is placed in its correct position.\n");
+					System.out.println("Finally, after all passes, the array is sorted as: \n" + Arrays.toString(numSortArray) + "\n");
 					continue;
 				}
+				
 				case 5 -> {
 					System.out.println("Insertion Sort.");
 					System.out.println("Here is the inital Array as you input: ");
