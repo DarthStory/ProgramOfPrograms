@@ -143,7 +143,6 @@ public class SortingAlgorithmsOverview {
 					// Convert ArrayList<Integer> to int[] for QuickSort
 					int[] numSortArray = numSort.stream().mapToInt(Integer::intValue).toArray();
 					int[] orgArray1Array = orgArray1.stream().mapToInt(Integer::intValue).toArray();
-					int[] orgArray2Array = orgArray2.stream().mapToInt(Integer::intValue).toArray();
 
 					System.out.println("Here is the initial Array as you input: ");
 					System.out.println(Arrays.toString(numSortArray));
@@ -159,7 +158,6 @@ public class SortingAlgorithmsOverview {
 
 					System.out.println("\n" + duration + "ms\n");
 					System.out.println("Original Array 1 (pre-sorted): \n" + Arrays.toString(orgArray1Array) + "\n");
-					System.out.println("Original Array 2 (pre-sorted): \n" + Arrays.toString(orgArray2Array) + "\n");
 					System.out.println("Here is the 3rd smallest number: \n" + numSortArray[2] + "\n");
 					System.out.println("First you have to determine the size of the array. Array Size is: \n" + numSortArray.length + "\n");
 					System.out.println("Then you have to iterate over the list from the first element: " + orgArray1Array[0] 
@@ -181,12 +179,47 @@ public class SortingAlgorithmsOverview {
 					continue;
 				}
 				case 3 -> {
-					System.out.println("3. Merge Sort.");
-					System.out.println("Here is the inital Array as you input: ");
-					System.out.println(numSort);
-
+					System.out.println("3. Merge Sort.\n");
+					System.out.println("""
+						Merge Sort is a stable, comparison-based sorting algorithm that uses a divide-and-conquer approach.
+						It works by recursively splitting the array into two halves, sorting each half, and then merging the sorted halves back together.
+				
+						Key Points:
+				
+						Merge Sort has a time complexity of O(n log n) for all cases, making it very predictable in terms of performance.
+						
+						Unlike Quick Sort, Merge Sort is not an in-place sorting algorithm, meaning it requires additional memory space equivalent to the array size.
+				
+						It is particularly efficient for sorting large datasets or linked lists.
+						""");
+				
+					// Convert ArrayList<Integer> to int[] for MergeSort
+					int[] numSortArray = numSort.stream().mapToInt(Integer::intValue).toArray();
+					int[] orgArray1Array = orgArray1.stream().mapToInt(Integer::intValue).toArray();
+				
+					System.out.println("Here is the initial Array as you input: ");
+					System.out.println(Arrays.toString(numSortArray));
+				
+					start = System.nanoTime();
+					MergeSort.mergeSort(numSortArray, 0, numSortArray.length - 1);
+					duration = (System.nanoTime() - start) / 100000;
+				
+					System.out.println("Sorted Array: ");
+					for (int num : numSortArray) {
+						System.out.print(num + " ");
+					}
+				
+					System.out.println("\n" + duration + "ms\n");
+					System.out.println("Original Array 1 (pre-sorted): \n" + Arrays.toString(orgArray1Array) + "\n");
+					System.out.println("Here is the 3rd smallest number: \n" + numSortArray[2] + "\n");
+					System.out.println("First, you have to determine the size of the array. Array Size is: \n" + numSortArray.length + "\n");
+					System.out.println("Then you have to divide the array into two halves: " + Arrays.toString(Arrays.copyOfRange(numSortArray, 0, numSortArray.length / 2)) 
+						+ " and " + Arrays.toString(Arrays.copyOfRange(numSortArray, numSortArray.length / 2, numSortArray.length)) + "\n");
+					System.out.println("These halves are recursively sorted and then merged back together.\n");
+					System.out.println("Finally, the entire array is merged and sorted as: \n" + Arrays.toString(numSortArray) + "\n");
 					continue;
 				}
+				
 				case 4 -> {
 					System.out.println("Bubble Sort.");
 					System.out.println("Here is the inital Array as you input: ");
