@@ -182,10 +182,9 @@ public class SortingAlgorithmsOverview {
 					System.out.println("Then you have to iterate over the list from the first element: " + orgArray1Array[0] 
 						+ " to the last element in the array: " + orgArray1Array[orgArray1Array.length - 1] + "\n");
 					System.out.println("""
-						You get 'i' from the partitioning process with the pivot. 
-						We chose the last element in the array. 
-						Here is the pivot element from orgArray1Array: \n" + orgArray1Array[0] + "\n
-							""");
+                        You get 'i' from the partitioning process with the pivot. We chose the first element in the array. Here is the pivot element from the Array: 
+                        """
+						+ orgArray1Array[0] + "\n");
 					System.out.println("Now you go over the rest of the array.\n");
 					for (int n = 1; n < orgArray1Array.length; n++) {
 						System.out.print(orgArray1Array[n] + " ");
@@ -231,13 +230,59 @@ public class SortingAlgorithmsOverview {
 					System.out.println("\n" + duration + "ms\n");
 					System.out.println("Original Array 1 (pre-sorted): \n" + Arrays.toString(orgArray1Array) + "\n");
 					System.out.println("Here is the 3rd smallest number: \n" + numSortArray[2] + "\n");
-					System.out.println("First, you have to determine the size of the array. Array Size is: \n" + numSortArray.length + "\n");
-					System.out.println("Then you have to divide the array into two halves: " + Arrays.toString(Arrays.copyOfRange(orgArray1Array, 0, orgArray1Array.length / 2)) 
-						+ " and " + Arrays.toString(Arrays.copyOfRange(orgArray1Array, orgArray1Array.length / 2, orgArray1Array.length)) + "\n");
-					System.out.println("These halves are recursively sorted and then merged back together.\n");
-					System.out.println("Finally, the entire array is merged and sorted as: \n" + Arrays.toString(numSortArray) + "\n");
+					System.out.println("First, you determine the size of the array. Array Size is: \n" + numSortArray.length + "\n");
+					System.out.println("Then, you split the array into two halves, sort them, and merge them back together.\n");
+				
+					// Demonstration with the first 4 elements
+					System.out.println("Let's take the first 4 elements and demonstrate how Merge Sort works step by step.\n");
+				
+					int[] demoArray = Arrays.copyOfRange(orgArray1Array, 0, 4);
+					System.out.println("Initial 4 elements: " + Arrays.toString(demoArray) + "\n");
+				
+					// Split into two halves
+					int mid = demoArray.length / 2;
+					int[] left = Arrays.copyOfRange(demoArray, 0, mid);
+					int[] right = Arrays.copyOfRange(demoArray, mid, demoArray.length);
+				
+					System.out.println("First, split the array into two halves:");
+					System.out.println("Left half: " + Arrays.toString(left));
+					System.out.println("Right half: " + Arrays.toString(right) + "\n");
+				
+					// Sort the two halves (since we're demonstrating, assume they are already sorted here)
+					Arrays.sort(left);
+					Arrays.sort(right);
+				
+					System.out.println("Next, sort the two halves (if they aren't already sorted):");
+					System.out.println("Sorted left half: " + Arrays.toString(left));
+					System.out.println("Sorted right half: " + Arrays.toString(right) + "\n");
+				
+					// Merge the two sorted halves back together
+					int i = 0, j = 0, k = 0;
+					while (i < left.length && j < right.length) {
+						if (left[i] <= right[j]) {
+							demoArray[k++] = left[i++];
+						} else {
+							demoArray[k++] = right[j++];
+						}
+					}
+				
+					// Copy remaining elements of left[], if any
+					while (i < left.length) {
+						demoArray[k++] = left[i++];
+					}
+				
+					// Copy remaining elements of right[], if any
+					while (j < right.length) {
+						demoArray[k++] = right[j++];
+					}
+				
+					System.out.println("Finally, merge the sorted halves back together:");
+					System.out.println("Merged and sorted array: " + Arrays.toString(demoArray) + "\n");
+				
+					System.out.println("After these steps, the first 4 elements are sorted using Merge Sort.\n");
 					continue;
 				}
+				
 				
 				case 4 -> {
 					System.out.println("4. Bubble Sort.\n");
