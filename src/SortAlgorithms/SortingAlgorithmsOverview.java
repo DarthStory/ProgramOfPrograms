@@ -23,7 +23,7 @@ public class SortingAlgorithmsOverview {
 		ArrayList<Integer> orgArray = new ArrayList<>(10);
 		ArrayList<Integer> orgArray1 = new ArrayList<>(10);
 		ArrayList<Integer> orgArray2 = new ArrayList<>(10);
-		//ArrayList<Integer> orgArray3 = new ArrayList<>(10);
+		ArrayList<Integer> orgArray3 = new ArrayList<>(10);
 
 		
 		@SuppressWarnings("resource")
@@ -41,7 +41,7 @@ public class SortingAlgorithmsOverview {
 					orgArray.add(dataIn);
 					orgArray1.add(dataIn);
 					orgArray2.add(dataIn);
-					//orgArray3.add(dataIn);
+					orgArray3.add(dataIn);
 				} catch (InputMismatchException | IllegalArgumentException e) {
 					System.out.println("Please enter a number from 0 - 100. No decimal numbers.");
 					scnr.next();
@@ -109,19 +109,38 @@ public class SortingAlgorithmsOverview {
 					System.out.println("Here is the 3rd smallest number: \n" + numSort.get(2) + "\n");
 					System.out.println("First you have to determine the size of the ArrayList. Array Size is: \n" + numSort.size() + "\n");
 					System.out.println("Then you have to iterate over the list from the first element: " + orgArray.get(0) 
-						+ " to the second to last element in the array: " + orgArray.get(8) + "\n");
-					System.out.println("You get 'i' from the smallest number in this array: \n" + orgArray1.get(0) + "\n");
-					System.out.println("Now you go over the rest of the array.\n");
-					for(int n = 1; n < orgArray.size(); n++) {
-						System.out.print(orgArray.get(n) + " ");
-					}
-					System.out.println("\n");
-					System.out.println("This is where you get the next lowest element in the array: \n" + orgArray1.get(1) + "\n");
+						+ " to the second to last element in the array: " + orgArray.get(9) + " Using the first element in the array as the smallest element.\n");
+					System.out.println("You get 'i' from the smallest number in this array: " + numSort.get(0) + ", and you swap it with the first element in the array.\n");
+
+					System.out.println("Now you go from the second element in the array: " + orgArray.get(1) + ", and go through the array again.\n");
+					System.out.println("This is where you get the next lowest element in the array: \n" + numSort.get(1) + "\n");
 					System.out.println("Then you repeat this until you have the final order.\n");
 					System.out.println(numSort);
 					System.out.println("");
 
-					
+					// Demonstration with the first 4 elements
+					System.out.println("This is what it would look like if you only sorted the first 4 elements in the array step by step.");
+					int[] demoArray = orgArray3.stream().mapToInt(Integer::intValue).toArray();
+					demoArray = Arrays.copyOfRange(demoArray, 0, 4);
+					System.out.println("Initial 4 elements: " + Arrays.toString(demoArray) + "\n");
+
+					for (int i = 0; i < demoArray.length - 1; i++) {
+						int minIndex = i;
+						for (int j = i + 1; j < demoArray.length; j++) {
+							if (demoArray[j] < demoArray[minIndex]) {
+								minIndex = j;
+							}
+						}
+
+						// Swap the found minimum element with the first unsorted element
+						int temp = demoArray[minIndex];
+						demoArray[minIndex] = demoArray[i];
+						demoArray[i] = temp;
+
+						System.out.println("Array after selecting and swapping element " + demoArray[i] + ": " + Arrays.toString(demoArray) + "\n");
+					}
+
+					System.out.println("After these steps, the first 4 elements are sorted.\n");
 					continue;
 					}
 
@@ -319,12 +338,68 @@ public class SortingAlgorithmsOverview {
 				}
 				
 				case 5 -> {
-					System.out.println("Insertion Sort.");
-					System.out.println("Here is the inital Array as you input: ");
-					System.out.println(numSort);
-
+					System.out.println("5. Insertion Sort.\n");
+					System.out.println("""
+						Insertion Sort is a simple, comparison-based sorting algorithm that builds the final sorted array one element at a time.
+						It works by repeatedly taking the next element from the unsorted portion of the array, and inserting it into the correct position 
+						in the sorted portion of the array.
+				
+						Key Points:
+				
+						Insertion Sort has a worst-case time complexity of O(n^2), making it inefficient on large datasets.
+						
+						It is a stable sorting algorithm, meaning that it preserves the relative order of equal elements.
+						
+						It is particularly efficient for small datasets or partially sorted arrays, as it requires fewer comparisons and swaps.
+						""");
+				
+					// Convert ArrayList<Integer> to int[] for InsertionSort
+					int[] numSortArray = numSort.stream().mapToInt(Integer::intValue).toArray();
+					int[] orgArray1Array = orgArray1.stream().mapToInt(Integer::intValue).toArray();
+				
+					System.out.println("Here is the initial Array as you input: ");
+					System.out.println(Arrays.toString(numSortArray));
+				
+					start = System.nanoTime();
+					InsertionSort.insertionSort(numSortArray);
+					duration = (System.nanoTime() - start) / 100000;
+				
+					System.out.println("Sorted Array: ");
+					for (int num : numSortArray) {
+						System.out.print(num + " ");
+					}
+				
+					System.out.println("\n" + duration + "ms\n");
+					System.out.println("Original Array 1 (pre-sorted): \n" + Arrays.toString(orgArray1Array) + "\n");
+					System.out.println("Here is the 3rd smallest number: \n" + numSortArray[2] + "\n");
+					System.out.println("First, you determine the size of the array. Array Size is: \n" + numSortArray.length + "\n");
+					System.out.println("Then, you iterate over the array, taking each element and inserting it into its correct position in the sorted portion of the array.\n");
+				
+					// Demonstration with the first 4 elements
+					System.out.println("Let's take the first 4 elements and demonstrate how Insertion Sort works step by step.\n");
+				
+					int[] demoArray = Arrays.copyOfRange(orgArray1Array, 0, 4);
+					System.out.println("Initial 4 elements: " + Arrays.toString(demoArray) + "\n");
+				
+					for (int i = 1; i < demoArray.length; i++) {
+						int key = demoArray[i];
+						int j = i - 1;
+				
+						// Move elements of demoArray[0..i-1], that are greater than key,
+						// to one position ahead of their current position
+						while (j >= 0 && demoArray[j] > key) {
+							demoArray[j + 1] = demoArray[j];
+							j = j - 1;
+						}
+						demoArray[j + 1] = key;
+				
+						System.out.println("Array after inserting element " + key + ": " + Arrays.toString(demoArray) + "\n");
+					}
+				
+					System.out.println("After these steps, the first 4 elements are sorted.\n");
 					continue;
 				}
+				
 				default -> {
 					System.out.println("Invalid Entry.");
 					continue;
