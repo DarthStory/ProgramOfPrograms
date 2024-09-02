@@ -14,6 +14,7 @@ public class InputHandler {
         return getInput("Enter password (max 15 characters): ");
     }
 
+    @SuppressWarnings("resource")
     private static String getInput(String prompt) {
         Scanner scnr = new Scanner(System.in);
         String input = "";
