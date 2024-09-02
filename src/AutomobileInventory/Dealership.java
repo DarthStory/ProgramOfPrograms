@@ -13,6 +13,11 @@ public class Dealership {
             try {
                 AutoInventory autoInventory = new AutoInventory();
                 Scanner scnr = new Scanner(System.in);
+
+                String username = InputHandler.getUsername();
+                String password = InputHandler.getPassword();
+
+                DatabaseConnection.setCredentials(username, password);
                 
                 Class.forName("com.mysql.cj.jdbc.Driver");
                 System.out.println("Driver loaded successfully");

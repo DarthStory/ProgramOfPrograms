@@ -12,8 +12,13 @@ import java.util.List;
 public class DatabaseConnection {
 
     private static final String AUTO_URL = "jdbc:mysql://localhost:3306/";
-    private static final String USER = "root";
-    private static final String PASSWORD = "Password1!";
+    private static String USER;
+    private static String PASSWORD;
+
+    public static void setCredentials(String username, String password) {
+        USER = username; 
+        PASSWORD = password;
+    }
 
     public static String getDbUrl() {
         return AUTO_URL;
