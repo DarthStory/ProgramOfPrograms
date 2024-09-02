@@ -92,41 +92,5 @@ public class DatabaseConnection {
             pstmt.setInt(5, auto.getMileage());
             pstmt.executeUpdate();
         }
-    }
-
-    public static Connection createGpaDatabase(String GPADatabase) {
-        Connection connection = null;
-
-        try {
-            connection = DriverManager.getConnection(getDbUrl(), getUser(), getPassword());
-            Statement stmt = connection.createStatement();
-
-            String createDBQuery = "CREATE DATABASE IF NOT EXISTS " + GPADatabase;
-            stmt.executeUpdate(createDBQuery);
-            System.out.println("Database '" + GPADatabase + "' checked/created successfully.");
-
-            connection = DriverManager.getConnection(getDbUrl() + GPADatabase, getUser(), getPassword());
-            System.out.println("Connected to the database '" + GPADatabase + "' successfully.");
-
-        } catch (SQLException e) {
-            System.out.println("4" + e);
-        }
-        return connection;
-    }
-
-    public static void createGpaTable(Connection connection) {
-        if(connection == null) {
-            System.out.println("Connection is not established.");
-            return;
-        }
-        try {
-            Statement stmt = connection.createStatement();
-            String createTableQuery = "CREATE TABLE IF NOT EXISTS GPA (id INT AUTO_INCREMENT PRIMARY KEY, name VARCHAR(20), address VARCHAR(20), gpa DECIMAL(2,1))";
-            stmt.executeUpdate(createTableQuery);
-            System.out.println("Table 'GPA' checked/created successfully.");
-
-        } catch (SQLException e) {
-            System.out.println("3" + e);
-        }
     }    
 }
