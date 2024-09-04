@@ -33,7 +33,7 @@ public class DatabaseConnection {
     public static Connection createAutoDatabase(String AutoDatabase) {
         Connection connection = null;        
             try {
-                connection = DriverManager.getConnection(getDbUrl(), getUser(), getPassword());
+                connection = DriverManager.getConnection(getDbUrl() + AutoDatabase, getUser(), getPassword());
                 Statement stmt = connection.createStatement();
                 String createDBQuery = "CREATE DATABASE IF NOT EXISTS " + AutoDatabase;
                 stmt.executeUpdate(createDBQuery);

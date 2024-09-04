@@ -10,31 +10,42 @@ public class Dealership {
 	@SuppressWarnings("resource")
 	public static void dealership() {
 		
-            try {
-                AutoInventory autoInventory = new AutoInventory();
-                Scanner scnr = new Scanner(System.in);
 
-                String username = InputHandler.getUsername();
-                String password = InputHandler.getPassword();
+        try {
+            AutoInventory autoInventory = new AutoInventory();
+            Scanner scnr = new Scanner(System.in);
 
-                DatabaseConnection.setCredentials(username, password);
+            Connection conn = null;
+
+            while (conn == null) {
                 
-                Class.forName("com.mysql.cj.jdbc.Driver");
-                System.out.println("Driver loaded successfully");
+                
+                try {
+                    String username = InputHandler.getUsername();
+                    String password = InputHandler.getPassword();
 
-                // Connect to database
-                Connection conn = DatabaseConnection.createAutoDatabase("AutoDatabase");
+                    DatabaseConnection.setCredentials(username, password);
+
+                    Class.forName("com.mysql.cj.jdbc.Driver");
+                    System.out.println("Driver loaded successfully");
+
+                    // Connect to database
+                    conn = DatabaseConnection.createAutoDatabase("AutoDatabase");
+
+                    if (conn == null) {
+                        System.out.println("Connection failed. Please try again.");
+                    } else {
+                        System.out.println("Connection established.");
+                    }
+                } catch (ClassNotFoundException e) {
+                    System.out.println("Failed to connect to the database or load the driver. Please try again.");
+                    System.out.println("Error: " + e.getMessage());
+                }
+
                 // Load automobiles from the database
                 List<Automobile> automobiles = DatabaseConnection.loadAutomobiles(conn);
                 autoInventory.setAutomobiles(automobiles);
                 System.out.println("Automobiles loaded from database.");
-
-                if (conn != null) {
-                    System.out.println("Connection established.");
-                }else {
-                    System.out.println("debug");
-                }
-                
                 /* A while loop that will keep running until specifically
                 * told to stop
                 */
@@ -221,11 +232,11 @@ public class Dealership {
                             autoInventory.viewAutomobiles();
                         default -> System.out.println("Invalid choice. Please try again.");
                     }
-                    // 0 being the weird number to choose, it exits the program.
+                    
                 }
-            } catch (ClassNotFoundException | SQLException ex) {
-                System.out.println("Error: " + ex);
-            } 
-	}
-	
+            }
+        } catch (SQLException e) {
+            System.out.println("Error: " + e);
+        }
+    }
 }
