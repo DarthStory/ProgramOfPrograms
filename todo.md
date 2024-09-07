@@ -9,4 +9,11 @@
 3. validate username and password
 > - if not valid, ask if they want to add user
 > - - if yes, add user
-> - - if no, go back to 1. 
+> - - if no, go back to 1.
+> - if valid, use creds to connect database
+
+### Start Program
+
+Dealership > Input Handler > Dealership
+
+
