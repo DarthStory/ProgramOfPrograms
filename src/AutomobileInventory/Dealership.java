@@ -26,11 +26,7 @@ public class Dealership {
                     String username = InputHandler.getUsername();
                     String password = InputHandler.getPassword();
 
-                    /*
-                     *  need to pass "username" and "password" to UserManager. This will need to validate if the user exists. If the user exists
-                     *  validate the password. If it passes, continue to the database connection attempt. If it does not, We need to start over. 
-                     */
-
+                    
                     DatabaseConnection.setCredentials(username, password);
 
                     Class.forName("com.mysql.cj.jdbc.Driver");
