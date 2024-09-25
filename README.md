@@ -57,8 +57,7 @@ Print the return value.
 
 Note: you may want to create a method to print the information in the main class.
 If "N", indicate that a file will not be printed.
-##    
-![](https://github.com/DarthStory/ProgramOfPrograms/blob/main/Flowchart%20for%20login.png)
+##
 ## Section 3. Sorting Algorithms Overview
 1. tell user what we are going to do
 2. request 10 integers under 100
