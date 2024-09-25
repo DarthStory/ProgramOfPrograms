@@ -28,11 +28,6 @@ public class ProgramOfPrograms {
 			System.out.println("2. Second Final Project. List of Students, sort and print.");
 			System.out.println("3. This is a program that implements and manipulates a Bag.");
 			System.out.println("4. Sorting Algorithms.");
-	//		System.out.println("5");
-	//		System.out.println("6");
-	//		System.out.println("7");
-	//		System.out.println("8");
-	//		System.out.println("9");
 			System.out.println("0. Exits program.");
 			
 			// User selects which program to play through. 
