@@ -10,7 +10,7 @@ A few things you will need to do to get this to run. You will need to have mySQL
 #
 
 ## Section 1. First project 
-This is a program that a Dealership could use to work with inventory. It was my first project in my programming classes. These are "simple" and "incomplete". The longer I work with them the more I find myself stating, "I could do this or that", however, I should do this from the start so these are as I was instructed to accomplish. 
+This is a program that a Dealership could use to work with inventory. It was my first project in my programming classes. These are "simple" and "incomplete". The longer I work with them the more I find myself stating, "I could do this or that", however, this is just to demonstrate my abilities, not be a full fledged program. I could not help but want to keep the information in a database as it felt that with at least one of my programs, I needed persistant data. All of our programs we learned nothing existed past the closure of the program. I added certain things to this Dealership Project to demonstrate that. I never actually learned how to connect to a database, how to implement a database, how to store passwords, or how to encrypt passwords. Everything that works with the Database was of my own want to do so.   
 
 ## This is the instruction I was given:
 
@@ -57,7 +57,8 @@ Print the return value.
 
 Note: you may want to create a method to print the information in the main class.
 If "N", indicate that a file will not be printed.
-##     
+##    
+![](https://github.com/DarthStory/ProgramOfPrograms/blob/main/Flowchart%20for%20login.png)
 ## Section 3. Sorting Algorithms Overview
 1. tell user what we are going to do
 2. request 10 integers under 100
