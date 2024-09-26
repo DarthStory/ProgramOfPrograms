@@ -7,7 +7,7 @@
 
 ![](https://github.com/DarthStory/ProgramOfPrograms/blob/main/Overview%20Flowchart.jpg)
 
-A few things you will need to do to get this to run. You will need to have mySQL installed and your Username and Password for the databases. Then you can go into the "DatabaseConnection.java" class and insert them there. Databases will be created in the first run of each program, so far only Dealership and GPASorter programs utilize mySQL as of this iteration. 
+A few things you will need to do to get this to run. You will need to have mySQL installed. The Dealership Inventory Program will ask for your credentials to create the necessary database and tables. Only the Dealership Inventory program utilizes mySQL for data storage. I was going to put it into the Student Sorter program but felt non-persistant data for that program was fine. The Bag Manipulation is also non-persistant, and the Sorting Algorithms program is more of an educational program. 
 
 #
 
@@ -21,13 +21,8 @@ This is a program that a Dealership could use to work with inventory. It was my 
 > - Automobile (main object)
 > - AutoInventory (data manipulation)
 
-### Your Portfolio Project will consist of three components:
+### Final program: Create a final program that meets the requirements outlined below.
 
-1. Program corrections: Make the appropriate corrections to all the programming assignments submitted as Critical Thinking assignments from Modules 1-6. You will need to submit the programs along with the carefully outlined corrections needed in order for the programs to run correctly.
-2. Lessons learned reflection: Create a 2-3-page summary that outlines the lessons learned in this Programming I course.
-3. Final program: Create a final program that meets the requirements outlined below.
-
-### Final Program Requirements
 >Create an automobile class that will be used by a dealership as a vehicle inventory program. The following attributes should be present in your automobile class:
 
 - private string make
@@ -35,7 +30,7 @@ This is a program that a Dealership could use to work with inventory. It was my 
 - private string color
 - private int year
 - private int mileage
-##### Your program should have appropriate methods such as:
+>#### Your program should have appropriate methods such as:
 
 - default constructor
 - parameterized constructor
@@ -59,25 +54,28 @@ Print the return value.
 
 Note: you may want to create a method to print the information in the main class.
 If "N", indicate that a file will not be printed.
-##
-## Section 3. Sorting Algorithms Overview
-1. tell user what we are going to do
-2. request 10 integers under 100
-3. store those integers in an array
-4. Ask the user to pick an algorithm to go over
-5. *Using the numbers they gave in the array, go through the steps in sorting the array.
-a. I will need to explain the array sort method. 
-b. I will need to keep the orgiginal array of integers they created to reference, then after sorted, I can identify what numbers are the smallest to largest and what number they replace.
-c. use this outline in order to progress the "lesson"
-1. Initialize: Determine the size of the list.
-2. Outer Loop: Iterate over the list from the first element to the second-to-last element.
-3. Assume Minimum: Assume the current element (at index i) is the smallest, and store its index as minIndex.
-4. Inner Loop: Iterate over the remaining unsorted portion of the list (from index i + 1 to the last element).
-5. Find Minimum: Compare each element in the unsorted portion to the current minimum. If a smaller element is found, update minIndex to the index of this smaller element.
-6. Swap: Swap the element at the current index (i) with the element at minIndex.
-7. Repeat: Repeat steps 3-6 for each element in the list until the entire list is sorted.
-8. Completion: The list is now sorted.
-6. Ask user if they want to go over another array
-7. repeat *
-8. if they say no, exit to main program. 
+## Section 2. List of Students. Sort and Print
+
+This project we were given the task to create a student object and manipulate it. Data should be user generated. 
+
+## This is what we were given to do:
+
+>Write a Java program that incorporates a loop that prompts the user for student data. Student data are private fields in a student class including:
+
+- String name
+- String address
+- double GPA
+- Each student object is stored in a linked list.
+
+>After the user completes the data entry, output the contents of the linked list in ascending sorted order by name to a regular text file that can be opened and viewed using a simple plain-text editor such as notepad.
+
+>Validate numeric data for Grade Point Average (GPA).
+
+## Section 3. Bag Manipulation
+
+This weekly project we were given was to manipulate the items in a bag. I chose to have user input as I do all of my projects. This was sort of a merger of 2 different week's projects. I saw no reason why I could not incorporate the previous weeks work and make one program to do more than a few things. Add, Remove, Contains, Clear, Count, merge, size, create a Set, and Print. There are 2 bags but the user only initially enters 10 "things" into the Bag. This can be any of the variables. 
+
+## Section 4. Sorting Algorithms Overview
+
+In this program I went through 5 different sorting methods and explained how each one worked. I was able to use the user in put in the examples to show when and where changes occurred. I attempted to make it as educational since most of a sorting algorithm is behind the scenes and not something the user manipulates. 
 
